@@ -199,16 +199,16 @@ export default function Portfolio() {
     },
     teamMembers: {
       en: [
-        { role: "Blockchain Full-stack Dev", count: "×1", icon: "⛓", color: "#00ff88" },
-        { role: "Web Developers", count: "×2", icon: "💻", color: "#00aaff" },
-        { role: "Web Designer", count: "×1", icon: "🎨", color: "#ff88ff" },
-        { role: "Planning · PM · Ops", count: "ME", icon: "◉", color: "#ff8800" },
+        { role: "Blockchain Full-stack Dev", count: "×1", color: "#00ff88" },
+        { role: "Web Developers", count: "×2", color: "#00aaff" },
+        { role: "Web Designer", count: "×1", color: "#ff88ff" },
+        { role: "Planning · PM · Ops", count: "ME", color: "#ff8800" },
       ],
       ko: [
-        { role: "블록체인 풀스택 개발자", count: "1명", icon: "⛓", color: "#00ff88" },
-        { role: "웹 개발자", count: "2명", icon: "💻", color: "#00aaff" },
-        { role: "웹 디자이너", count: "1명", icon: "🎨", color: "#ff88ff" },
-        { role: "기획 · PM · 운영", count: "ME", icon: "◉", color: "#ff8800" },
+        { role: "블록체인 풀스택 개발자", count: "1명", color: "#00ff88" },
+        { role: "웹 개발자", count: "2명", color: "#00aaff" },
+        { role: "웹 디자이너", count: "1명", color: "#ff88ff" },
+        { role: "기획 · PM · 운영", count: "ME", color: "#ff8800" },
       ],
     },
     teamQuote1: {
@@ -935,7 +935,6 @@ export default function Portfolio() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = m.color + "40"; e.currentTarget.style.background = "#131313"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.background = "#111"; }}
               >
-                <div style={{ fontSize: 32, marginBottom: 16 }}>{m.icon}</div>
                 <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 14, fontWeight: 700, marginBottom: 6 }}>{m.role}</div>
                 <div style={{ fontSize: 24, fontWeight: 800, color: m.color, fontFamily: "'Syne',sans-serif" }}>{m.count}</div>
               </div>
