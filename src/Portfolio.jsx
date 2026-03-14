@@ -141,24 +141,28 @@ export default function Portfolio() {
     },
     vaticaFeatures: {
       en: [
-        { icon: "🏠", name: "Markets Home", desc: "Browse prediction markets by category (Politics, Sports, Crypto, Finance, Tech)" },
-        { icon: "👆", name: "Swipe Survey", desc: "Tinder-style swipe UX for quick prediction participation — gamification at its core" },
-        { icon: "💼", name: "Portfolio & P/L", desc: "Real-time portfolio tracking, daily/weekly returns, prediction history dashboard" },
-        { icon: "💳", name: "Deposit / Withdrawal", desc: "USDC-based deposit/withdrawal system with chain selection and QR address generation" },
-        { icon: "📋", name: "Terms & Onboarding", desc: "Legal TOS v1.0.4, geo-restrictions, wallet connect → email → terms agreement flow" },
+        { icon: "🏠", name: "Markets Home", desc: "Browse prediction markets across categories including politics, sports, crypto, finance, and tech" },
+        { icon: "👆", name: "Swipe Survey", desc: "Swipe-based quick participation UX mode for predictions" },
+        { icon: "💼", name: "Portfolio & P/L", desc: "Dashboard for portfolio status, periodic P/L, and prediction history at a glance" },
+        { icon: "💳", name: "Deposit / Withdrawal", desc: "USDC-based deposit/withdrawal with chain selection and QR address generation flow" },
+        { icon: "📋", name: "Terms & Onboarding", desc: "Onboarding structure design including TOS, geo-restrictions, wallet connection, email collection, and terms agreement" },
       ],
       ko: [
-        { icon: "🏠", name: "Markets Home", desc: "카테고리별 예측 마켓 브라우징 (Politics, Sports, Crypto, Finance, Tech)" },
-        { icon: "👆", name: "Swipe Survey", desc: "Tinder 스타일 스와이프 UX로 빠르게 예측에 참여하는 게이미피케이션 모드" },
-        { icon: "💼", name: "Portfolio & P/L", desc: "실시간 포트폴리오 추적, 일간/주간 수익률, 예측 히스토리 대시보드" },
-        { icon: "💳", name: "Deposit / Withdrawal", desc: "USDC 기반 입출금 시스템. 체인 선택, QR 주소 생성까지 구현" },
-        { icon: "📋", name: "Terms & Onboarding", desc: "법적 TOS v1.0.4, 지역 제한, 월렛 연결 → 이메일 수집 → 약관 동의 플로우" },
+        { icon: "🏠", name: "Markets Home", desc: "정치, 스포츠, 크립토, 금융, 테크 등 카테고리별 예측 마켓 탐색 기능" },
+        { icon: "👆", name: "Swipe Survey", desc: "스와이프 기반의 빠른 참여형 예측 UX 모드" },
+        { icon: "💼", name: "Portfolio & P/L", desc: "포트폴리오 현황, 기간별 손익, 예측 히스토리를 한눈에 확인할 수 있는 대시보드" },
+        { icon: "💳", name: "Deposit / Withdrawal", desc: "USDC 기반 입출금 기능 및 체인 선택/QR 주소 생성 플로우" },
+        { icon: "📋", name: "Terms & Onboarding", desc: "TOS, 지역 제한, 지갑 연결, 이메일 수집, 약관 동의 절차를 포함한 온보딩 구조 설계" },
       ],
     },
-    vaticaIpNote: { en: "* The designs above are work produced by a designer under my team. All IP belongs to me.", ko: "* 상기 디자인은 본인 소속 디자이너의 작업물이며, 모든 IP는 본인에게 귀속됩니다." },
+    vaticaIpNote: { en: "* The designs above were created for the VATICA project. Related IP and deliverables are managed in accordance with project agreements.", ko: "* 상기 디자인은 VATICA 프로젝트를 위해 제작된 작업물이며, 관련 IP 및 결과물은 프로젝트 기준에 따라 관리됩니다." },
     vaticaRoles: {
-      en: ["Service Architecture", "Feature Specs", "UX Flow Design", "TOS/Legal Docs", "Ops Policy", "Design Direction", "Overseas Team Mgmt", "IP & Equity Design"],
-      ko: ["서비스 구조 설계", "기능 명세 작성", "UX 흐름 기획", "TOS/법률 문서 작성", "운영 정책 수립", "디자인 디렉션", "해외 팀 관리", "IP 계약 · 지분 설계"],
+      en: ["Service Architecture", "Feature Specs & Planning Docs", "UX Flow Design", "Smart Contract Structure Planning", "On-chain Settlement Logic", "TOS & Ops Documentation", "Operational Policy", "Design Direction", "Overseas Team Coordination", "IP & Collaboration Agreement Structure", "Initial Equity Structure Planning"],
+      ko: ["서비스 구조 설계", "기능 명세 및 기획 문서 작성", "UX 흐름 기획", "스마트컨트랙트 구조 기획", "온체인 정산 로직 기획", "TOS 및 운영 문서 정리", "운영 정책 수립", "디자인 디렉션", "해외 협업 인력 관리", "IP/협업 계약 구조 정리", "초기 지분 구조 기획"],
+    },
+    vaticaAiNote: {
+      en: "AI tools are actively used to support research, documentation, planning, and workflow efficiency.",
+      ko: "리서치, 문서화, 기획 정리, 워크플로우 효율화를 위해 AI 도구를 적극 활용합니다.",
     },
     botDesc: {
       en: `Designed proprietary scoring metrics based on <span style="color:#e8e6e3;font-weight:500">years of futures trading experience</span>, creating <span style="color:#ff8800;font-weight:500">custom indicators and a scoring framework</span> to evaluate copy targets. <span style="color:#e8e6e3;font-weight:500">Tracks all active wallets on-chain</span> and automates the full pipeline — target discovery → observation → data collection → copy trading — using AI. Integrated with Telegram for <span style="color:#e8e6e3;font-weight:500">easy control and real-time monitoring</span>, with <span style="color:#e8e6e3;font-weight:500">high-level security design</span> against hacking. Operating in a live environment while validating performance and risk management structure. It demonstrates not just planning ability, but the execution required to design and operate systems that actually work.`,
@@ -801,8 +805,10 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              {(lang === "en" ? ["Prediction Market", "dApp", "Solidity", "P2P", "USDC", "IP Agreement", "Equity Design", "Mobile-first"] : ["Prediction Market", "dApp", "Solidity", "P2P", "USDC", "IP 계약", "지분 설계", "Mobile-first"]).map(tag => (
+            <p style={{ fontSize: 12, color: "#888", fontStyle: "italic", marginTop: 12 }}>{L(t.vaticaAiNote)}</p>
+
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 24 }}>
+              {(lang === "en" ? ["Prediction Market", "Web3 Service", "dApp Planning", "Smart Contract Structure", "On-chain Settlement", "USDC", "Collaboration Structure", "Initial Equity Structure", "Mobile-first"] : ["Prediction Market", "Web3 Service", "dApp 기획", "스마트컨트랙트 구조", "온체인 정산", "USDC", "협업 구조", "초기 지분 구조", "Mobile-first"]).map(tag => (
                 <span key={tag} style={{
                   padding: "5px 11px", background: "#1a1a1a", borderRadius: 3,
                   fontSize: 12, color: "#999", fontWeight: 400,
