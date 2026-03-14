@@ -222,6 +222,11 @@ export default function Portfolio() {
     return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const scrollTo = (id) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
@@ -263,6 +268,64 @@ export default function Portfolio() {
         .btn-outline { display:inline-flex; align-items:center; gap:8px; padding:14px 32px; background:transparent; color:#e8e6e3; font-weight:600; font-size:14px; letter-spacing:1px; text-transform:uppercase; border:1px solid #333; cursor:pointer; border-radius:4px; font-family:'Outfit',sans-serif; transition:all .2s; }
         .btn-outline:hover { border-color:#00ff88; color:#00ff88; }
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+        /* Mobile Responsive */
+        @media(max-width:768px) {
+          .hero-stats { gap: 24px !important; }
+          .hero-stats > div > div:first-child { font-size: 28px !important; }
+          .about-grid { grid-template-columns: 1fr !important; }
+          .services-grid { grid-template-columns: 1fr !important; }
+          .services-grid > div > div { border-right: none !important; }
+          .vatica-features-grid { grid-template-columns: 1fr 1fr !important; }
+          .bot-stats-grid { grid-template-columns: 1fr 1fr !important; }
+          .team-grid { grid-template-columns: 1fr 1fr !important; }
+          .team-quote { padding: 24px 20px !important; }
+          .team-quote p:first-child { font-size: 15px !important; }
+          .vatica-header { flex-direction: column !important; }
+          .vatica-roles-grid { grid-template-columns: 1fr 1fr !important; }
+          .footer-wrap { flex-direction: column !important; text-align: center !important; gap: 12px !important; }
+        }
+        @media(max-width:480px) {
+          .hero-stats { gap: 20px !important; }
+          .hero-stats > div > div:first-child { font-size: 24px !important; }
+          .vatica-features-grid { grid-template-columns: 1fr !important; }
+          .bot-stats-grid { grid-template-columns: 1fr !important; }
+          .team-grid { grid-template-columns: 1fr !important; }
+          .vatica-roles-grid { grid-template-columns: 1fr !important; }
+          .contact-buttons { flex-direction: column !important; align-items: center !important; }
+          .contact-buttons a, .contact-buttons button { width: 100% !important; justify-content: center !important; }
+        }
+
+        /* Mobile menu overlay */
+        .mobile-menu-overlay {
+          position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(10,10,10,.97); z-index: 999;
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          gap: 24px; backdrop-filter: blur(20px);
+        }
+        .mobile-menu-overlay > div {
+          font-size: 18px; letter-spacing: 3px; cursor: pointer; font-weight: 600;
+          color: #888; transition: color .2s; padding: 8px 0;
+        }
+        .mobile-menu-overlay > div:hover { color: #00ff88; }
+        .mobile-menu-overlay > div.active-mobile { color: #00ff88; }
+
+        /* Hamburger button */
+        .hamburger {
+          display: none; flex-direction: column; gap: 5px; cursor: pointer;
+          padding: 8px; z-index: 1001; background: none; border: none;
+        }
+        .hamburger span {
+          display: block; width: 20px; height: 2px; background: #e8e6e3;
+          transition: all .3s ease; border-radius: 1px;
+        }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        @media(max-width:768px) {
+          .hamburger { display: flex; }
+          .nav-links { display: none !important; }
+        }
       `}</style>
 
       <div className="grain" />
@@ -280,35 +343,47 @@ export default function Portfolio() {
         <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 20, letterSpacing: -0.5, cursor: "pointer" }} onClick={() => scrollTo("HOME")}>
           <span style={{ color: "#00ff88" }}>●</span> Mr. BEOM
         </div>
-        <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
+        <div className="nav-links" style={{ display: "flex", gap: 32, alignItems: "center" }}>
           {SECTIONS.map(s => (
             <div key={s} onClick={() => scrollTo(s)} style={{
               fontSize: 12, letterSpacing: 1.5, cursor: "pointer", fontWeight: 500,
               color: activeSection === s ? "#00ff88" : "#666",
               transition: "color .2s",
-              display: "var(--nav-display, flex)",
             }}
             onMouseEnter={e => e.target.style.color = "#00ff88"}
             onMouseLeave={e => { if (activeSection !== s) e.target.style.color = "#666"; }}
             >{s}</div>
           ))}
         </div>
-        <style>{`@media(max-width:768px){nav div:nth-child(2)>div{--nav-display:none !important;}}`}</style>
-        <div style={{
-          display: "flex", alignItems: "center", gap: 6,
-          padding: "4px 5px", background: "#1a1a1a", borderRadius: 20,
-          border: "1px solid #2a2a2a",
-        }}>
-          {["EN", "KR"].map(l => (
-            <div key={l} onClick={() => setLang(l === "EN" ? "en" : "ko")} style={{
-              padding: "5px 12px", borderRadius: 16, fontSize: 11, fontWeight: 600,
-              letterSpacing: 1, cursor: "pointer", transition: "all .2s",
-              background: (l === "EN" ? "en" : "ko") === lang ? "#00ff88" : "transparent",
-              color: (l === "EN" ? "en" : "ko") === lang ? "#0a0a0a" : "#666",
-            }}>{l}</div>
-          ))}
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{
+            display: "flex", alignItems: "center", gap: 6,
+            padding: "4px 5px", background: "#1a1a1a", borderRadius: 20,
+            border: "1px solid #2a2a2a",
+          }}>
+            {["EN", "KR"].map(l => (
+              <div key={l} onClick={() => setLang(l === "EN" ? "en" : "ko")} style={{
+                padding: "5px 12px", borderRadius: 16, fontSize: 11, fontWeight: 600,
+                letterSpacing: 1, cursor: "pointer", transition: "all .2s",
+                background: (l === "EN" ? "en" : "ko") === lang ? "#00ff88" : "transparent",
+                color: (l === "EN" ? "en" : "ko") === lang ? "#0a0a0a" : "#666",
+              }}>{l}</div>
+            ))}
+          </div>
+          <button className={`hamburger${menuOpen ? " open" : ""}`} onClick={() => setMenuOpen(!menuOpen)}>
+            <span /><span /><span />
+          </button>
         </div>
       </nav>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div className="mobile-menu-overlay">
+          {SECTIONS.map(s => (
+            <div key={s} className={activeSection === s ? "active-mobile" : ""} onClick={() => scrollTo(s)}>{s}</div>
+          ))}
+        </div>
+      )}
 
       {/* HERO */}
       <section id="home" style={{
@@ -352,7 +427,7 @@ export default function Portfolio() {
         </FadeIn>
 
         <FadeIn delay={0.7}>
-          <div style={{ display: "flex", gap: 48, marginTop: 80, flexWrap: "wrap" }}>
+          <div className="hero-stats" style={{ display: "flex", gap: 48, marginTop: 80, flexWrap: "wrap" }}>
             {[
               { num: "5+", label: "Years in Web3" },
               { num: "4", label: "Team Members" },
@@ -386,7 +461,7 @@ export default function Portfolio() {
           <p style={{ fontSize: 17, color: "#999", lineHeight: 2, maxWidth: 760, marginBottom: 48, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.aboutDesc) }} />
         </FadeIn>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
+        <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
           {L(t.aboutCards).map((item, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <div className="card" style={{ height: "100%" }}>
@@ -482,7 +557,7 @@ export default function Portfolio() {
           </h2>
         </FadeIn>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 2 }}>
+        <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 2 }}>
           {L(t.serviceItems).map((s, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div style={{
@@ -532,7 +607,7 @@ export default function Portfolio() {
               borderRadius: "50%", filter: "blur(50px)", pointerEvents: "none",
             }} />
 
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 24 }}>
+            <div className="vatica-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 24 }}>
               <div>
                 <div className="tag" style={{ marginBottom: 16 }}>IN DEVELOPMENT</div>
                 <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 800, letterSpacing: -0.5 }}>
@@ -562,7 +637,7 @@ export default function Portfolio() {
               <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 App Design
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 12 }}>
+              <div className="vatica-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 12 }}>
                 <div style={{
                   borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
                   background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
@@ -622,7 +697,7 @@ export default function Portfolio() {
               <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 Core Features
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
+              <div className="vatica-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
                 {L(t.vaticaFeatures).map((f, i) => (
                   <div key={i} style={{
                     padding: "20px 16px", background: "#0d0d0d", border: "1px solid #1a1a1a",
@@ -729,7 +804,7 @@ export default function Portfolio() {
             </div>
 
             {/* Bot Feature highlights */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 24 }}>
+            <div className="bot-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 24 }}>
               {[
 ...L(t.botStats),
               ].map((s, i) => (
@@ -786,7 +861,7 @@ export default function Portfolio() {
           <p style={{ fontSize: 16, color: "#666", maxWidth: 600, lineHeight: 1.7, marginBottom: 48, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.teamDesc) }} />
         </FadeIn>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
+        <div className="team-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
           {[
 ...L(t.teamMembers),
           ].map((m, i) => (
@@ -808,7 +883,7 @@ export default function Portfolio() {
         </div>
 
         <FadeIn delay={0.4}>
-          <div style={{
+          <div className="team-quote" style={{
             marginTop: 48, padding: "32px 40px", background: "linear-gradient(135deg, #111 0%, #0f1a14 100%)",
             border: "1px solid #00ff8815", borderRadius: 8,
           }}>
@@ -842,7 +917,7 @@ export default function Portfolio() {
           <p style={{ fontSize: 16, color: "#666", maxWidth: 480, margin: "0 auto 40px", lineHeight: 1.7, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.contactDesc) }} />
         </FadeIn>
         <FadeIn delay={0.3}>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="contact-buttons" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <a href="mailto:contact@example.com" className="btn-primary" style={{ textDecoration: "none" }}>{L(t.contactBtn1)}</a>
             <a href="https://t.me/" className="btn-outline" target="_blank" rel="noopener" style={{ textDecoration: "none" }}>Telegram</a>
           </div>
@@ -850,7 +925,7 @@ export default function Portfolio() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{
+      <footer className="footer-wrap" style={{
         borderTop: "1px solid #1a1a1a", padding: "40px clamp(20px,8vw,120px)",
         display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16,
       }}>
