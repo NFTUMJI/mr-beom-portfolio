@@ -454,7 +454,7 @@ export default function Portfolio() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.35}>
-          <p style={{ fontSize: 18, color: "#888", maxWidth: 560, lineHeight: 1.7, marginTop: 28, fontWeight: 300 }}>
+          <p style={{ fontSize: 18, color: "#999", maxWidth: 560, lineHeight: 1.7, marginTop: 28, fontWeight: 400 }}>
             {L(t.heroSub1)}<br />
             {L(t.heroSub2)}
           </p>
@@ -476,7 +476,7 @@ export default function Portfolio() {
             ].map((s, i) => (
               <div key={i}>
                 <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 36, fontWeight: 800, color: "#00ff88" }}>{s.num}</div>
-                <div style={{ fontSize: 12, color: "#555", letterSpacing: 1.5, marginTop: 4, textTransform: "uppercase" }}>{s.label}</div>
+                <div style={{ fontSize: 13, color: "#777", letterSpacing: 1.5, marginTop: 4, textTransform: "uppercase" }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -490,7 +490,7 @@ export default function Portfolio() {
         <FadeIn>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
             <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 12, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>ABOUT</span>
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>ABOUT</span>
           </div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 20, letterSpacing: -1 }}>
             {L(t.aboutTitle1)}<br /><span style={{ color: "#00ff88" }}>{L(t.aboutTitle2)}</span>
@@ -498,7 +498,7 @@ export default function Portfolio() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p style={{ fontSize: 17, color: "#999", lineHeight: 2, maxWidth: 760, marginBottom: 48, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.aboutDesc) }} />
+          <p style={{ fontSize: 17, color: "#aaa", lineHeight: 2, maxWidth: 760, marginBottom: 48, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.aboutDesc) }} />
         </FadeIn>
 
         <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
@@ -507,7 +507,7 @@ export default function Portfolio() {
               <div className="card" style={{ height: "100%" }}>
                 <div style={{ fontSize: 24, color: "#00ff88", marginBottom: 16 }}>{item.icon}</div>
                 <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 10, fontFamily: "'Syne',sans-serif" }}>{item.title}</h3>
-                <p style={{ fontSize: 13, color: "#888", lineHeight: 1.7, fontWeight: 300 }}>{item.desc}</p>
+                <p style={{ fontSize: 13, color: "#999", lineHeight: 1.7, fontWeight: 400 }}>{item.desc}</p>
               </div>
             </FadeIn>
           ))}
@@ -521,7 +521,7 @@ export default function Portfolio() {
         <FadeIn>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
             <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 12, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>JOURNEY</span>
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>JOURNEY</span>
           </div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 60, letterSpacing: -1 }}>
             {L(t.journeyTitle)}
@@ -553,15 +553,15 @@ export default function Portfolio() {
                 <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: 22, fontWeight: 700, marginBottom: 4 }}>
                   {item.title}
                 </h3>
-                <div style={{ fontSize: 13, color: "#555", marginBottom: 12, fontWeight: 500 }}>{item.subtitle}</div>
-                <p style={{ fontSize: 14, color: "#888", lineHeight: 1.8, maxWidth: 600, fontWeight: 300, marginBottom: 12 }}>
+                <div style={{ fontSize: 13, color: "#777", marginBottom: 12, fontWeight: 500 }}>{item.subtitle}</div>
+                <p style={{ fontSize: 14, color: "#999", lineHeight: 1.8, maxWidth: 600, fontWeight: 400, marginBottom: 12 }}>
                   {item.desc}
                 </p>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                   {item.tags.map(tag => (
                     <span key={tag} style={{
                       padding: "4px 10px", background: "#1a1a1a", borderRadius: 3,
-                      fontSize: 11, color: "#777", fontWeight: 400,
+                      fontSize: 12, color: "#999", fontWeight: 400,
                     }}>{tag}</span>
                   ))}
                 </div>
@@ -576,7 +576,7 @@ export default function Portfolio() {
             background: "#111", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap",
           }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#00ff88", animation: "pulse 2s infinite" }} />
-            <span style={{ fontSize: 14, color: "#888", fontWeight: 300 }}>
+            <span style={{ fontSize: 14, color: "#999", fontWeight: 400 }}>
               {L(t.journeyNow)}
             </span>
           </div>
@@ -590,7 +590,7 @@ export default function Portfolio() {
         <FadeIn>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
             <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 12, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>SERVICES</span>
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>SERVICES</span>
           </div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 48, letterSpacing: -1 }}>
             {L(t.servicesTitle1)} <span style={{ color: "#00ff88" }}>{L(t.servicesTitle2)}</span>
@@ -615,7 +615,7 @@ export default function Portfolio() {
                 {s.items.map((item, j) => (
                   <div key={j} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
                     <div style={{ width: 4, height: 4, background: "#00ff88", borderRadius: "50%" }} />
-                    <span style={{ fontSize: 14, color: "#888", fontWeight: 300 }}>{item}</span>
+                    <span style={{ fontSize: 14, color: "#999", fontWeight: 400 }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -631,10 +631,10 @@ export default function Portfolio() {
         <FadeIn>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
             <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 12, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>PROJECTS</span>
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>PROJECTS</span>
           </div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 48, letterSpacing: -1 }}>
-            {L(t.projectsTitle1)}<br /><span style={{ color: "#666" }}>{L(t.projectsTitle2)}</span>
+            {L(t.projectsTitle1)}<br /><span style={{ color: "#888" }}>{L(t.projectsTitle2)}</span>
           </h2>
         </FadeIn>
 
@@ -660,21 +660,21 @@ export default function Portfolio() {
               <div style={{ display: "flex", gap: 12 }}>
                 <div style={{ padding: "8px 16px", background: "#1a1a1a", borderRadius: 6, textAlign: "center" }}>
                   <div style={{ fontSize: 18, fontWeight: 800, color: "#00ff88", fontFamily: "'Syne',sans-serif" }}>4</div>
-                  <div style={{ fontSize: 10, color: "#555", letterSpacing: 1, marginTop: 2 }}>TEAM</div>
+                  <div style={{ fontSize: 10, color: "#777", letterSpacing: 1, marginTop: 2 }}>TEAM</div>
                 </div>
                 <div style={{ padding: "8px 16px", background: "#1a1a1a", borderRadius: 6, textAlign: "center" }}>
                   <div style={{ fontSize: 18, fontWeight: 800, color: "#00ff88", fontFamily: "'Syne',sans-serif" }}>1yr</div>
-                  <div style={{ fontSize: 10, color: "#555", letterSpacing: 1, marginTop: 2 }}>{lang === "en" ? "OPS" : "운영"}</div>
+                  <div style={{ fontSize: 10, color: "#777", letterSpacing: 1, marginTop: 2 }}>{lang === "en" ? "OPS" : "운영"}</div>
                 </div>
               </div>
             </div>
 
-            <p style={{ fontSize: 15, color: "#999", lineHeight: 1.9, maxWidth: 720, marginBottom: 32, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.vaticaDesc) }} />
+            <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.9, maxWidth: 720, marginBottom: 32, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.vaticaDesc) }} />
 
 
             {/* App Design Showcase */}
             <div style={{ marginBottom: 32 }}>
-              <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
+              <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 App Design
               </div>
               <div className="vatica-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
@@ -695,19 +695,19 @@ export default function Portfolio() {
                   >
                     <img src={item.src} alt={item.label} style={{ width: "100%", height: 280, display: "block", objectFit: "cover", objectPosition: "top" }} />
                     <div style={{ padding: "12px 14px" }}>
-                      <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>{item.label}</div>
+                      <div style={{ fontSize: 13, color: "#999", fontWeight: 400 }}>{item.label}</div>
                     </div>
                   </div>
                 ))}
               </div>
-              <p style={{ fontSize: 11, color: "#444", marginTop: 10, fontStyle: "italic" }}>
+              <p style={{ fontSize: 12, color: "#666", marginTop: 10, fontStyle: "italic" }}>
                 {L(t.vaticaIpNote)}
               </p>
             </div>
 
             {/* Feature Showcase Grid */}
             <div style={{ marginBottom: 32 }}>
-              <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
+              <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 Core Features
               </div>
               <div className="vatica-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
@@ -721,7 +721,7 @@ export default function Portfolio() {
                   >
                     <div style={{ fontSize: 20, marginBottom: 10 }}>{f.icon}</div>
                     <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, fontFamily: "'Syne',sans-serif", color: "#e8e6e3" }}>{f.name}</div>
-                    <div style={{ fontSize: 12, color: "#666", lineHeight: 1.6, fontWeight: 300 }}>{f.desc}</div>
+                    <div style={{ fontSize: 13, color: "#888", lineHeight: 1.6, fontWeight: 400 }}>{f.desc}</div>
                   </div>
                 ))}
               </div>
@@ -729,14 +729,14 @@ export default function Portfolio() {
 
             {/* My Role */}
             <div style={{ padding: "20px 24px", background: "#0a0a0a", border: "1px solid #1a1a1a", borderRadius: 8, marginBottom: 24 }}>
-              <div style={{ fontSize: 11, color: "#00ff88", letterSpacing: 2, marginBottom: 12, fontWeight: 600, textTransform: "uppercase" }}>My Role</div>
+              <div style={{ fontSize: 12, color: "#00ff88", letterSpacing: 2, marginBottom: 12, fontWeight: 600, textTransform: "uppercase" }}>My Role</div>
               <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                 {[
                   ...L(t.vaticaRoles),
                 ].map(r => (
                   <div key={r} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <div style={{ width: 5, height: 5, background: "#00ff88", borderRadius: "50%" }} />
-                    <span style={{ fontSize: 13, color: "#888", fontWeight: 400 }}>{r}</span>
+                    <span style={{ fontSize: 13, color: "#999", fontWeight: 400 }}>{r}</span>
                   </div>
                 ))}
               </div>
@@ -746,7 +746,7 @@ export default function Portfolio() {
               {(lang === "en" ? ["Prediction Market", "dApp", "Solidity", "P2P", "USDC", "IP Agreement", "Equity Design", "Mobile-first"] : ["Prediction Market", "dApp", "Solidity", "P2P", "USDC", "IP 계약", "지분 설계", "Mobile-first"]).map(tag => (
                 <span key={tag} style={{
                   padding: "5px 11px", background: "#1a1a1a", borderRadius: 3,
-                  fontSize: 11, color: "#777", fontWeight: 400,
+                  fontSize: 12, color: "#999", fontWeight: 400,
                 }}>{tag}</span>
               ))}
             </div>
@@ -768,12 +768,12 @@ export default function Portfolio() {
             <p style={{ fontSize: 14, color: "#ff8800", fontWeight: 500, marginBottom: 20, letterSpacing: 0.5 }}>
               Automated Trading System — On-chain Tracking · Telegram Control · Live
             </p>
-            <p style={{ fontSize: 15, color: "#999", lineHeight: 1.9, maxWidth: 720, marginBottom: 28, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.botDesc) }} />
+            <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.9, maxWidth: 720, marginBottom: 28, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.botDesc) }} />
 
 
             {/* Bot Telegram Screenshots */}
             <div style={{ marginBottom: 24 }}>
-              <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
+              <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 Live System
               </div>
               <div className="bot-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
@@ -793,7 +793,7 @@ export default function Portfolio() {
                   >
                     <img src={item.src} alt={item.label} style={{ width: "100%", height: 280, display: "block", objectFit: "cover", objectPosition: "top" }} />
                     <div style={{ padding: "12px 14px" }}>
-                      <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>{item.label}</div>
+                      <div style={{ fontSize: 13, color: "#999", fontWeight: 400 }}>{item.label}</div>
                     </div>
                   </div>
                 ))}
@@ -806,7 +806,7 @@ export default function Portfolio() {
 ...L(t.botStats),
               ].map((s, i) => (
                 <div key={i} style={{ padding: "16px", background: "#0d0d0d", border: "1px solid #1a1a1a", borderRadius: 8 }}>
-                  <div style={{ fontSize: 10, color: "#555", letterSpacing: 1.5, marginBottom: 6, textTransform: "uppercase" }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: "#777", letterSpacing: 1.5, marginBottom: 6, textTransform: "uppercase" }}>{s.label}</div>
                   <div style={{ fontSize: 15, fontWeight: 700, color: s.color, fontFamily: "'Syne',sans-serif" }}>{s.value}</div>
                 </div>
               ))}
@@ -816,7 +816,7 @@ export default function Portfolio() {
               {L(t.botTags).map(tag => (
                 <span key={tag} style={{
                   padding: "5px 11px", background: "#1a1a1a", borderRadius: 3,
-                  fontSize: 11, color: "#777", fontWeight: 400,
+                  fontSize: 12, color: "#999", fontWeight: 400,
                 }}>{tag}</span>
               ))}
             </div>
@@ -830,12 +830,12 @@ export default function Portfolio() {
             <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, marginBottom: 12, letterSpacing: -0.5 }}>
               Web3 프로젝트 다수 경험
             </h3>
-            <p style={{ fontSize: 15, color: "#999", lineHeight: 1.9, maxWidth: 720, marginBottom: 24, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.web3Desc) }} />
+            <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.9, maxWidth: 720, marginBottom: 24, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.web3Desc) }} />
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {(lang === "en" ? ["Metakongz", "NFT", "Community Ops", "PM", "Service Planning", "Blockchain"] : ["Metakongz", "NFT", "커뮤니티 운영", "PM", "서비스 기획", "블록체인"]).map(tag => (
                 <span key={tag} style={{
                   padding: "5px 11px", background: "#1a1a1a", borderRadius: 3,
-                  fontSize: 11, color: "#777", fontWeight: 400,
+                  fontSize: 12, color: "#999", fontWeight: 400,
                 }}>{tag}</span>
               ))}
             </div>
@@ -850,12 +850,12 @@ export default function Portfolio() {
         <FadeIn>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
             <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 12, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>TEAM</span>
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>TEAM</span>
           </div>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 16, letterSpacing: -1 }}>
             {L(t.teamTitle)}
           </h2>
-          <p style={{ fontSize: 16, color: "#666", maxWidth: 600, lineHeight: 1.7, marginBottom: 48, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.teamDesc) }} />
+          <p style={{ fontSize: 16, color: "#888", maxWidth: 600, lineHeight: 1.7, marginBottom: 48, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.teamDesc) }} />
         </FadeIn>
 
         <div className="team-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
@@ -889,7 +889,7 @@ export default function Portfolio() {
               <span dangerouslySetInnerHTML={{ __html: L(t.teamQuote1) }} />
               <span style={{ color: "#00ff88" }}>"</span>
             </p>
-            <p style={{ fontSize: 13, color: "#555", marginTop: 12 }}>{L(t.teamQuote2)}</p>
+            <p style={{ fontSize: 13, color: "#777", marginTop: 12 }}>{L(t.teamQuote2)}</p>
           </div>
         </FadeIn>
       </section>
@@ -901,7 +901,7 @@ export default function Portfolio() {
         <FadeIn>
           <div style={{ display: "inline-flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
             <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 12, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>CONTACT</span>
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>CONTACT</span>
             <div style={{ width: 32, height: 1, background: "#00ff88" }} />
           </div>
         </FadeIn>
@@ -911,7 +911,7 @@ export default function Portfolio() {
           </h2>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <p style={{ fontSize: 16, color: "#666", maxWidth: 480, margin: "0 auto 40px", lineHeight: 1.7, fontWeight: 300 }} dangerouslySetInnerHTML={{ __html: L(t.contactDesc) }} />
+          <p style={{ fontSize: 16, color: "#888", maxWidth: 480, margin: "0 auto 40px", lineHeight: 1.7, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.contactDesc) }} />
         </FadeIn>
         <FadeIn delay={0.3}>
           <div className="contact-buttons" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
@@ -929,7 +929,7 @@ export default function Portfolio() {
         <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 14 }}>
           <span style={{ color: "#00ff88" }}>●</span> Mr. BEOM
         </div>
-        <div style={{ fontSize: 12, color: "#444" }}>
+        <div style={{ fontSize: 13, color: "#666" }}>
           © 2026 — {L(t.footerTag)}
         </div>
       </footer>
