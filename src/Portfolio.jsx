@@ -617,8 +617,8 @@ export default function Portfolio() {
               onMouseEnter={e => e.currentTarget.style.background = "#111"}
               onMouseLeave={e => e.currentTarget.style.background = "transparent"}
               >
-                <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 48, fontWeight: 800, color: "#222", marginBottom: 16,
-                  WebkitTextStroke: "1px #555",
+                <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 48, fontWeight: 800, color: "transparent", marginBottom: 16,
+                  WebkitTextStroke: "1px #00ff8840",
                 }}>{s.num}</div>
                 <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20, fontFamily: "'Syne',sans-serif" }}>{s.title}</h3>
                 {s.items.map((item, j) => (
