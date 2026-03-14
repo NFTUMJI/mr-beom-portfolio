@@ -50,6 +50,24 @@ export default function Portfolio() {
     heroSub2: { en: "An execution-focused partner who leads real collaboration with developers and designers", ko: "개발자·디자이너 팀을 직접 운영하는 실행형 파트너" },
     heroBtn1: { en: "VIEW PROJECTS →", ko: "프로젝트 보기 →" },
 
+    // Profile
+    profileIntro: {
+      en: "A hands-on partner connecting blockchain/Web3 service planning, project management, and execution",
+      ko: "블록체인/Web3 서비스 기획부터 PM, 실행까지 연결하는 실무형 파트너",
+    },
+    profileCareer: {
+      en: [
+        { year: "2021–2024", desc: "Joined Metakongz and worked on multiple NFT projects in execution-focused roles" },
+        { year: "2024", desc: "Joined Art In Motion, working on NFT projects and planning for a licensed crypto casino" },
+        { year: "2025–Present", desc: "Currently developing personal Web3 projects and AI-based automation systems" },
+      ],
+      ko: [
+        { year: "2021–2024", desc: "메타콩즈 입사 및 다수 NFT 프로젝트 실무 담당" },
+        { year: "2024", desc: "아트인모션 입사, NFT 프로젝트 및 라이선스 보유 크립토 카지노 기획 담당" },
+        { year: "2025–현재", desc: "개인 Web3 프로젝트 및 AI 기반 자동화 시스템 개발 진행 중" },
+      ],
+    },
+
     // About
     aboutTitle1: { en: "Not just a planner —", ko: "모더레이터에서 시작해," },
     aboutTitle2: { en: "an execution partner.", ko: "팀을 이끄는 실행자가 되었습니다." },
@@ -491,6 +509,36 @@ export default function Portfolio() {
           </div>
         </FadeIn>
       </section>
+
+      <div className="glow-line" />
+
+      {/* PROFILE */}
+      <div style={{ padding: "clamp(60px,8vw,100px) clamp(20px,8vw,120px)", maxWidth: 1200, margin: "0 auto" }}>
+        <FadeIn>
+          <img src="/pfp.jpg" alt="BEOM" style={{ width: 140, height: 140, borderRadius: "50%", border: "3px solid #00ff8840", margin: "0 auto 24px", display: "block", objectFit: "cover" }} />
+          <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 32, fontWeight: 800, textAlign: "center", marginBottom: 12 }}>BEOM</div>
+          <p style={{ fontSize: 15, color: "#aaa", textAlign: "center", maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.7 }}>
+            {L(t.profileIntro)}
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.1}>
+          <div style={{ maxWidth: 700, margin: "0 auto 32px" }}>
+            {L(t.profileCareer).map((item, i) => (
+              <div key={i} style={{ display: "flex", gap: 16, marginBottom: 16, alignItems: "baseline" }}>
+                <span style={{ color: "#00ff88", fontWeight: 700, fontSize: 14, fontFamily: "'Syne',sans-serif", minWidth: 130, display: "inline-block" }}>{item.year}</span>
+                <span style={{ color: "#bbb", fontSize: 14 }}>{item.desc}</span>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <div style={{ textAlign: "center" }}>
+            <span style={{ padding: "6px 16px", border: "1px solid #00ff8850", borderRadius: 20, fontSize: 13, color: "#00ff88", display: "inline-block" }}>Web3 PM</span>
+          </div>
+        </FadeIn>
+      </div>
 
       <div className="glow-line" />
 
