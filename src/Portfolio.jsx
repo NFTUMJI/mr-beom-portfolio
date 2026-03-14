@@ -271,7 +271,7 @@ export default function Portfolio() {
 
         /* Mobile Responsive */
         @media(max-width:768px) {
-          .hero-section { padding-top: 100px !important; }
+          .hero-section { padding-top: 120px !important; }
           .hero-stats { gap: 24px !important; }
           .hero-stats > div > div:first-child { font-size: 28px !important; }
           .about-grid { grid-template-columns: 1fr !important; }
@@ -314,7 +314,7 @@ export default function Portfolio() {
           .vatica-gallery::-webkit-scrollbar-thumb, .bot-gallery::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
         }
         @media(max-width:480px) {
-          .hero-section { padding-top: 110px !important; }
+          .hero-section { padding-top: 130px !important; }
           .hero-stats { gap: 20px !important; }
           .hero-stats > div > div:first-child { font-size: 24px !important; }
           .vatica-features-grid { grid-template-columns: 1fr !important; }
