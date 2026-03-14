@@ -141,18 +141,18 @@ export default function Portfolio() {
     },
     vaticaFeatures: {
       en: [
-        { icon: "/icon-markets.png", name: "Markets Home", desc: "Browse prediction markets across categories including politics, sports, crypto, finance, and tech" },
-        { icon: "/icon-swipe.png", name: "Swipe Survey", desc: "Swipe-based quick participation UX mode for predictions" },
-        { icon: "/icon-portfolio.png", name: "Portfolio & P/L", desc: "Dashboard for portfolio status, periodic P/L, and prediction history at a glance" },
-        { icon: "/icon-deposit.png", name: "Deposit / Withdrawal", desc: "USDC-based deposit/withdrawal with chain selection and QR address generation flow" },
-        { icon: "/icon-terms.png", name: "Terms & Onboarding", desc: "Onboarding structure design including TOS, geo-restrictions, wallet connection, email collection, and terms agreement" },
+        { name: "Markets Home", desc: "Browse prediction markets across categories including politics, sports, crypto, finance, and tech" },
+        { name: "Swipe Survey", desc: "Swipe-based quick participation UX mode for predictions" },
+        { name: "Portfolio & P/L", desc: "Dashboard for portfolio status, periodic P/L, and prediction history at a glance" },
+        { name: "Deposit / Withdrawal", desc: "USDC-based deposit/withdrawal with chain selection and QR address generation flow" },
+        { name: "Terms & Onboarding", desc: "Onboarding structure design including TOS, geo-restrictions, wallet connection, email collection, and terms agreement" },
       ],
       ko: [
-        { icon: "/icon-markets.png", name: "Markets Home", desc: "정치, 스포츠, 크립토, 금융, 테크 등 카테고리별 예측 마켓 탐색 기능" },
-        { icon: "/icon-swipe.png", name: "Swipe Survey", desc: "스와이프 기반의 빠른 참여형 예측 UX 모드" },
-        { icon: "/icon-portfolio.png", name: "Portfolio & P/L", desc: "포트폴리오 현황, 기간별 손익, 예측 히스토리를 한눈에 확인할 수 있는 대시보드" },
-        { icon: "/icon-deposit.png", name: "Deposit / Withdrawal", desc: "USDC 기반 입출금 기능 및 체인 선택/QR 주소 생성 플로우" },
-        { icon: "/icon-terms.png", name: "Terms & Onboarding", desc: "TOS, 지역 제한, 지갑 연결, 이메일 수집, 약관 동의 절차를 포함한 온보딩 구조 설계" },
+        { name: "Markets Home", desc: "정치, 스포츠, 크립토, 금융, 테크 등 카테고리별 예측 마켓 탐색 기능" },
+        { name: "Swipe Survey", desc: "스와이프 기반의 빠른 참여형 예측 UX 모드" },
+        { name: "Portfolio & P/L", desc: "포트폴리오 현황, 기간별 손익, 예측 히스토리를 한눈에 확인할 수 있는 대시보드" },
+        { name: "Deposit / Withdrawal", desc: "USDC 기반 입출금 기능 및 체인 선택/QR 주소 생성 플로우" },
+        { name: "Terms & Onboarding", desc: "TOS, 지역 제한, 지갑 연결, 이메일 수집, 약관 동의 절차를 포함한 온보딩 구조 설계" },
       ],
     },
     vaticaIpNote: { en: "* The designs above were created for the VATICA project. Related IP and deliverables are managed in accordance with project agreements.", ko: "* 상기 디자인은 VATICA 프로젝트를 위해 제작된 작업물이며, 관련 IP 및 결과물은 프로젝트 기준에 따라 관리됩니다." },
@@ -782,7 +782,6 @@ export default function Portfolio() {
                   onMouseEnter={e => e.currentTarget.style.borderColor = "#00ff8830"}
                   onMouseLeave={e => e.currentTarget.style.borderColor = "#1a1a1a"}
                   >
-                    <img src={f.icon} alt={f.name} style={{ width: 48, height: 48, borderRadius: 8, marginBottom: 10 }} />
                     <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, fontFamily: "'Syne',sans-serif", color: "#e8e6e3" }}>{f.name}</div>
                     <div style={{ fontSize: 13, color: "#888", lineHeight: 1.6, fontWeight: 400 }}>{f.desc}</div>
                   </div>
