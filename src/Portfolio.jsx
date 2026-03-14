@@ -949,8 +949,8 @@ export default function Portfolio() {
         </FadeIn>
         <FadeIn delay={0.3}>
           <div className="contact-buttons" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="mailto:contact@example.com" className="btn-primary" style={{ textDecoration: "none" }}>{L(t.contactBtn1)}</a>
-            <a href="https://t.me/" className="btn-outline" target="_blank" rel="noopener" style={{ textDecoration: "none" }}>Telegram</a>
+            <a href="mailto:94yoonbum@gmail.com" className="btn-primary" style={{ textDecoration: "none" }}>{L(t.contactBtn1)}</a>
+            <a href="https://t.me/bbbeeeooommm" className="btn-outline" target="_blank" rel="noopener" style={{ textDecoration: "none" }}>Telegram</a>
           </div>
         </FadeIn>
       </section>
