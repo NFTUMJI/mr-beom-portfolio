@@ -39,6 +39,7 @@ export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("HOME");
   const [lang, setLang] = useState("en");
+  const [lightboxImg, setLightboxImg] = useState(null);
 
   const t = {
     // Hero
@@ -669,58 +670,27 @@ export default function Portfolio() {
                 App Design
               </div>
               <div className="vatica-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", paddingBottom: 8 }}>
-                <div style={{
-                  borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
-                  background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                  minWidth: 260, flexShrink: 0,
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8830"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <img src="/vatica-01.jpg" alt="Home · Markets · Wallet" style={{ width: "100%", display: "block" }} />
-                  <div style={{ padding: "12px 14px" }}>
-                    <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>Wallet Connect</div>
+                {[
+                  { src: "/vatica-01.jpg", label: "Wallet Connect" },
+                  { src: "/vatica-02.jpg", label: "Portfolio & Earnings" },
+                  { src: "/vatica-03.jpg", label: "Swipe Survey" },
+                  { src: "/vatica-04.jpg", label: "P/L Results" },
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
+                    background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
+                    width: 160, flexShrink: 0,
+                  }}
+                  onClick={() => setLightboxImg(item.src)}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8830"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
+                  >
+                    <img src={item.src} alt={item.label} style={{ width: "100%", height: 280, display: "block", objectFit: "cover", objectPosition: "top" }} />
+                    <div style={{ padding: "12px 14px" }}>
+                      <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>{item.label}</div>
+                    </div>
                   </div>
-                </div>
-                <div style={{
-                  borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
-                  background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                  minWidth: 260, flexShrink: 0,
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8830"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <img src="/vatica-02.jpg" alt="Onboarding · Welcome · TOS" style={{ width: "100%", display: "block" }} />
-                  <div style={{ padding: "12px 14px" }}>
-                    <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>Portfolio & Earnings</div>
-                  </div>
-                </div>
-                <div style={{
-                  borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
-                  background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                  minWidth: 260, flexShrink: 0,
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8830"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <img src="/vatica-03.jpg" alt="Swipe Survey · Matchday" style={{ width: "100%", display: "block" }} />
-                  <div style={{ padding: "12px 14px" }}>
-                    <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>Swipe Survey</div>
-                  </div>
-                </div>
-                <div style={{
-                  borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
-                  background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                  minWidth: 260, flexShrink: 0,
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8830"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <img src="/vatica-04.jpg" alt="Portfolio · Deposit · P/L" style={{ width: "100%", display: "block" }} />
-                  <div style={{ padding: "12px 14px" }}>
-                    <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>P/L Results</div>
-                  </div>
-                </div>
+                ))}
               </div>
               <p style={{ fontSize: 11, color: "#444", marginTop: 10, fontStyle: "italic" }}>
                 {L(t.vaticaIpNote)}
@@ -799,45 +769,26 @@ export default function Portfolio() {
                 Live System
               </div>
               <div className="bot-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", paddingBottom: 8 }}>
-                <div style={{
-                  borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
-                  background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                  minWidth: 260, flexShrink: 0,
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff880030"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <img src="/bot-01.jpg" alt="AI Report · VIP" style={{ width: "100%", display: "block" }} />
-                  <div style={{ padding: "12px 14px" }}>
-                    <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>AI Report · VIP</div>
+                {[
+                  { src: "/bot-01.jpg", label: "AI Report · VIP" },
+                  { src: "/bot-02.jpg", label: "Target Scoring · 87" },
+                  { src: "/bot-03.jpg", label: "Positions · Daily PnL" },
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
+                    background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
+                    width: 160, flexShrink: 0,
+                  }}
+                  onClick={() => setLightboxImg(item.src)}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff880030"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
+                  >
+                    <img src={item.src} alt={item.label} style={{ width: "100%", height: 280, display: "block", objectFit: "cover", objectPosition: "top" }} />
+                    <div style={{ padding: "12px 14px" }}>
+                      <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>{item.label}</div>
+                    </div>
                   </div>
-                </div>
-                <div style={{
-                  borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
-                  background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                  minWidth: 260, flexShrink: 0,
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff880030"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <img src="/bot-02.jpg" alt="Target Scoring · 87" style={{ width: "100%", display: "block" }} />
-                  <div style={{ padding: "12px 14px" }}>
-                    <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>Target Scoring · 87</div>
-                  </div>
-                </div>
-                <div style={{
-                  borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
-                  background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                  minWidth: 260, flexShrink: 0,
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff880030"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <img src="/bot-03.jpg" alt="Positions · Daily PnL" style={{ width: "100%", display: "block" }} />
-                  <div style={{ padding: "12px 14px" }}>
-                    <div style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>Positions · Daily PnL</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -974,6 +925,18 @@ export default function Portfolio() {
           © 2026 — {L(t.footerTag)}
         </div>
       </footer>
+
+      {/* LIGHTBOX */}
+      {lightboxImg && (
+        <div onClick={() => setLightboxImg(null)} style={{
+          position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
+          background: "rgba(0,0,0,0.95)", zIndex: 10000,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          cursor: "pointer",
+        }}>
+          <img src={lightboxImg} alt="" style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain" }} />
+        </div>
+      )}
     </div>
   );
 }
