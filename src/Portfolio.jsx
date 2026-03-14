@@ -165,26 +165,26 @@ export default function Portfolio() {
       ko: "리서치, 문서화, 기획 정리, 워크플로우 효율화를 위해 AI 도구를 적극 활용합니다.",
     },
     botDesc: {
-      en: `Designed proprietary scoring metrics based on <span style="color:#e8e6e3;font-weight:500">years of futures trading experience</span>, creating <span style="color:#ff8800;font-weight:500">custom indicators and a scoring framework</span> to evaluate copy targets. <span style="color:#e8e6e3;font-weight:500">Tracks all active wallets on-chain</span> and automates the full pipeline — target discovery → observation → data collection → copy trading — using AI. Integrated with Telegram for <span style="color:#e8e6e3;font-weight:500">easy control and real-time monitoring</span>, with <span style="color:#e8e6e3;font-weight:500">high-level security design</span> against hacking. Operating in a live environment while validating performance and risk management structure. It demonstrates not just planning ability, but the execution required to design and operate systems that actually work.`,
-      ko: `<span style="color:#e8e6e3;font-weight:500">수년간의 선물 트레이딩 경력</span>에서 축적한 노하우를 기반으로, 카피 대상의 성과를 평가하는 <span style="color:#ff8800;font-weight:500">각종 개인 지표와 점수 체계</span>를 직접 설계. <span style="color:#e8e6e3;font-weight:500">온체인에서 활동이 있는 지갑들을 추적</span>하여 카피 대상 탐색 → 관찰 → 데이터 수집 → 카피 매매까지 이어지는 전체 파이프라인을 AI를 활용하여 자동화. 텔레그램 앱과 연동하여 <span style="color:#e8e6e3;font-weight:500">손쉬운 조작과 실시간 모니터링</span>이 가능하며, 해킹 방지를 위한 <span style="color:#e8e6e3;font-weight:500">높은 수준의 보안 설계</span>까지 적용. 실제 운용 환경에서 시스템을 운영하며 성능과 리스크 관리 구조를 검증하고 있는 프로젝트.`
+      en: `Based on <span style="color:#e8e6e3;font-weight:500">years of futures trading experience</span>, I designed <span style="color:#ff8800;font-weight:500">custom indicators and a scoring framework</span> to evaluate copy targets. I built a full pipeline that <span style="color:#e8e6e3;font-weight:500">tracks active wallets on-chain</span> — from target discovery → observation → data collection → copy trading.<br/><br/>Automation is powered by AI, with <span style="color:#e8e6e3;font-weight:500">Telegram integration for control and real-time monitoring</span>. The system also incorporates <span style="color:#e8e6e3;font-weight:500">security and risk response measures designed for live operation</span>, and is currently being validated in a real trading environment.<br/><br/><span style="color:#888;font-size:13px">AI is used for target discovery, data processing, scoring support, report generation, and operational monitoring.</span>`,
+      ko: `수년간의 선물 트레이딩 경험을 바탕으로, 카피 대상을 평가하는 <span style="color:#ff8800;font-weight:500">개인 지표와 점수 체계</span>를 직접 설계했습니다. <span style="color:#e8e6e3;font-weight:500">온체인에서 활동하는 지갑을 추적</span>하고, 대상 탐색 → 관찰 → 데이터 수집 → 카피 매매까지 이어지는 전체 파이프라인을 구축했습니다.<br/><br/>AI를 활용해 자동화를 구성했으며, 텔레그램 연동을 통해 <span style="color:#e8e6e3;font-weight:500">제어 및 실시간 모니터링</span>이 가능하도록 설계했습니다. 또한 <span style="color:#e8e6e3;font-weight:500">실운용 환경을 고려한 보안 및 리스크 대응 구조</span>를 적용했고, 현재 실제 운영 환경에서 시스템의 성능과 리스크 관리 체계를 검증하고 있습니다.<br/><br/><span style="color:#888;font-size:13px">AI는 대상 탐색, 데이터 정리, 점수화 보조, 리포트 생성 및 운영 모니터링 효율화에 활용되었습니다.</span>`
     },
     botStats: {
       en: [
         { label: "STATUS", value: "LIVE", color: "#00ff88" },
         { label: "BASED ON", value: "Futures Trading Experience", color: "#ff8800" },
-        { label: "CORE", value: "On-chain · Scoring", color: "#ff4488" },
-        { label: "OPS", value: "Telegram · Security", color: "#00aaff" },
+        { label: "CORE STRUCTURE", value: "On-chain · Scoring", color: "#ff4488" },
+        { label: "OPS METHOD", value: "Telegram · Real-time Monitoring", color: "#00aaff" },
       ],
       ko: [
         { label: "상태", value: "LIVE", color: "#00ff88" },
-        { label: "기반", value: "선물 트레이딩 경력", color: "#ff8800" },
-        { label: "핵심", value: "온체인 추적 · 스코어링", color: "#ff4488" },
-        { label: "운영", value: "텔레그램 연동 · 보안 설계", color: "#00aaff" },
+        { label: "기반", value: "선물 트레이딩 실전 경험", color: "#ff8800" },
+        { label: "핵심 구조", value: "온체인 추적 · 스코어링", color: "#ff4488" },
+        { label: "운영 방식", value: "텔레그램 연동 · 실시간 모니터링", color: "#00aaff" },
       ],
     },
     botTags: {
-      en: ["Futures Trading", "On-chain Tracking", "Scoring System", "AI Trading", "Telegram", "Security", "Risk Mgmt"],
-      ko: ["선물 트레이딩", "온체인 지갑 추적", "스코어링 시스템", "AI 자동매매", "텔레그램 연동", "보안 설계", "리스크 관리"],
+      en: ["Futures Trading", "On-chain Tracking", "Scoring System", "AI-powered Automation", "Telegram", "Operational Security", "Risk Mgmt"],
+      ko: ["선물 트레이딩", "온체인 지갑 추적", "스코어링 시스템", "AI 기반 자동화", "텔레그램 연동", "운영 보안 설계", "리스크 관리"],
     },
     web3Desc: {
       en: `Starting from <span style="color:#e8e6e3;font-weight:500">Metakongz</span>, gained experience across multiple NFT and blockchain projects in community ops, PM, and service planning. The on-the-ground experience built the foundation for current planning and execution capabilities.`,
@@ -843,7 +843,7 @@ export default function Portfolio() {
               <div className="bot-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
                 {[
                   { src: "/bot-01.jpg", label: "AI Report · VIP" },
-                  { src: "/bot-02.jpg", label: "Target Scoring · 87" },
+                  { src: "/bot-02.jpg", label: "Target Ranking & Scoring" },
                   { src: "/bot-03.jpg", label: "Positions · Daily PnL" },
                 ].map((item, i) => (
                   <div key={i} style={{
