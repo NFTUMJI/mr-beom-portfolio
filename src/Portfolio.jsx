@@ -679,7 +679,7 @@ export default function Portfolio() {
                   <div key={i} style={{
                     borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
                     background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                    width: 160, flexShrink: 0,
+                    width: 160, flexShrink: 0, scrollSnapAlign: "start",
                   }}
                   onClick={() => setLightboxImg(item.src)}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8830"; e.currentTarget.style.transform = "translateY(-2px)"; }}
@@ -777,7 +777,7 @@ export default function Portfolio() {
                   <div key={i} style={{
                     borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
                     background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                    width: 160, flexShrink: 0,
+                    width: 160, flexShrink: 0, scrollSnapAlign: "start",
                   }}
                   onClick={() => setLightboxImg(item.src)}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff880030"; e.currentTarget.style.transform = "translateY(-2px)"; }}
