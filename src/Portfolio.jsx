@@ -67,7 +67,7 @@ export default function Portfolio() {
       ko: [
         { icon: "◆", title: "현장에서 쌓은 감각", desc: "커뮤니티 최전선에서 시작. 유저가 무엇을 원하는지 몸으로 익힌 기획자." },
         { icon: "◇", title: "기획 → 실행 연결", desc: "서비스 구조, UX 흐름, 운영 정책까지 — 개발 착수에 필요한 모든 것을 직접 정리하고 주도." },
-        { icon: "●", title: "AI 시스템 구축·운용", desc: "선물 트레이딩 경험 기반의 개인 지표·점수 체계를 설계하고, AI로 카피 매매 전체 파이프라인을 자동화. 실제 자금 운용·수익 검증 완료." },
+        { icon: "●", title: "AI 시스템 구축·운용", desc: "AI를 활용한 카피 매매 봇을 직접 기획·구축. 실제 운용 환경에서 성능과 리스크 관리 구조를 검증하며 운영 중. 단순 기획이 아닌, 작동하는 시스템을 만드는 실행력." },
         { icon: "▲", title: "팀 빌딩 & 운영", desc: "해외 인력 4명을 직접 리크루팅하고 급여를 지급하며 1년째 프로젝트를 운영 중." },
       ],
     },
@@ -95,8 +95,8 @@ export default function Portfolio() {
     journeyNow: { en: "In progress — VATICA development & AI bot operations", ko: "현재 진행형 — VATICA 개발 & AI 봇 운용 중" },
 
     // Services
-    servicesTitle1: { en: "From planning", ko: "맡기면" },
-    servicesTitle2: { en: "to execution.", ko: "굴러갑니다." },
+    servicesTitle1: { en: "From planning", ko: "기획에서 끝나지 않고" },
+    servicesTitle2: { en: "to execution.", ko: "실행까지 연결합니다." },
     serviceItems: {
       en: [
         { num: "01", title: "Service Planning & PM", items: ["Service architecture design", "Feature specs & UX flows", "Operational policy setup", "Roadmap planning & mgmt"] },
@@ -142,7 +142,7 @@ export default function Portfolio() {
     },
     botDesc: {
       en: `Designed proprietary scoring metrics based on <span style="color:#e8e6e3;font-weight:500">years of futures trading experience</span>, creating <span style="color:#ff8800;font-weight:500">custom indicators and a scoring framework</span> to evaluate copy targets. <span style="color:#e8e6e3;font-weight:500">Tracks all active wallets on-chain</span> and automates the full pipeline — target discovery → observation → data collection → copy trading — using AI. Integrated with Telegram for <span style="color:#e8e6e3;font-weight:500">easy control and real-time monitoring</span>, with <span style="color:#e8e6e3;font-weight:500">high-level security design</span> against hacking. Live with real capital, generating profit.`,
-      ko: `<span style="color:#e8e6e3;font-weight:500">수년간의 선물 트레이딩 경력</span>에서 축적한 노하우를 기반으로, 카피 대상의 성과를 평가하는 <span style="color:#ff8800;font-weight:500">각종 개인 지표와 점수 체계</span>를 직접 설계. <span style="color:#e8e6e3;font-weight:500">온체인에서 활동이 있는 지갑들을 추적</span>하여 카피 대상 탐색 → 관찰 → 데이터 수집 → 카피 매매까지 이어지는 전체 파이프라인을 AI를 활용하여 자동화. 텔레그램 앱과 연동하여 <span style="color:#e8e6e3;font-weight:500">손쉬운 조작과 실시간 모니터링</span>이 가능하며, 해킹 방지를 위한 <span style="color:#e8e6e3;font-weight:500">높은 수준의 보안 설계</span>까지 적용. 실제 자금을 투입하여 운용 중이며 수익이 발생하고 있는 라이브 프로젝트.`
+      ko: `<span style="color:#e8e6e3;font-weight:500">수년간의 선물 트레이딩 경력</span>에서 축적한 노하우를 기반으로, 카피 대상의 성과를 평가하는 <span style="color:#ff8800;font-weight:500">각종 개인 지표와 점수 체계</span>를 직접 설계. <span style="color:#e8e6e3;font-weight:500">온체인에서 활동이 있는 지갑들을 추적</span>하여 카피 대상 탐색 → 관찰 → 데이터 수집 → 카피 매매까지 이어지는 전체 파이프라인을 AI를 활용하여 자동화. 텔레그램 앱과 연동하여 <span style="color:#e8e6e3;font-weight:500">손쉬운 조작과 실시간 모니터링</span>이 가능하며, 해킹 방지를 위한 <span style="color:#e8e6e3;font-weight:500">높은 수준의 보안 설계</span>까지 적용. 실제 운용 환경에서 시스템을 운영하며 성능과 리스크 관리 구조를 검증하고 있는 프로젝트.`
     },
     botStats: {
       en: [
@@ -171,7 +171,7 @@ export default function Portfolio() {
     teamTitle: { en: "I work with a real team.", ko: "혼자가 아닙니다." },
     teamDesc: {
       en: "A real team I've been running for over a year, with overseas talent I recruited directly.<br/>I pay salaries and connect planning → development → design → execution.",
-      ko: "해외에서 직접 인력을 찾아 1년째 운영 중인 실제 협업 팀입니다.<br/>직접 급여를 지급하며 기획 → 개발 → 디자인 → 실행까지 연결합니다."
+      ko: "기획 → 개발 → 디자인 → 실행까지 연결 가능한 협업 구조를 갖추고 있습니다.<br/>단순 네트워크가 아니라, 실제 비용 집행 기반으로 운영 중인 협업 팀입니다."
     },
     teamMembers: {
       en: [
@@ -189,13 +189,13 @@ export default function Portfolio() {
     },
     teamQuote1: {
       en: "When you work with me, you don't just get ideas —<br/>you get execution that actually moves projects forward.",
-      ko: "이 사람에게 맡기면 기획만 나오는 게 아니라,<br/>실제로 프로젝트가 굴러간다."
+      ko: "이 사람과 함께하면 기획에서 끝나지 않고,<br/>실제 실행 단계까지 이어진다."
     },
-    teamQuote2: { en: "— That's how I work.", ko: "— 이것이 내가 주는 가치입니다." },
+    teamQuote2: { en: "— That's how I work.", ko: "— 이것이 제가 드리는 가치입니다." },
 
     // Contact
     contactTitle1: { en: "Let's move your", ko: "프로젝트를 함께" },
-    contactTitle2: { en: "project forward.", ko: "굴려봅시다." },
+    contactTitle2: { en: "project forward.", ko: "실행해봅시다." },
     contactDesc: {
       en: "If you need support with blockchain/Web3 project planning, PM, or service structure design,<br/>feel free to reach out.",
       ko: "블록체인/Web3 프로젝트 기획, PM, 서비스 구조 설계가 필요하시다면<br/>편하게 연락 주세요."
