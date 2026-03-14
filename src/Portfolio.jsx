@@ -43,15 +43,15 @@ export default function Portfolio() {
   const t = {
     // Hero
     heroTag: { en: "BLOCKCHAIN · WEB3 · PM · EXECUTION", ko: "BLOCKCHAIN · WEB3 · PM · EXECUTION" },
-    heroTitle1: { en: "Ideas don't ship themselves.", ko: "기획에서 끝나지 않는다." },
-    heroTitle2: { en: "I make it happen.", ko: "실행까지 굴린다." },
+    heroTitle1: { en: "I don't stop at planning.", ko: "기획에서 끝나지 않는다." },
+    heroTitle2: { en: "I drive execution.", ko: "실행까지 굴린다." },
     heroSub1: { en: "Web3 Project Planning · PM · Service Design", ko: "Web3 프로젝트 기획 · PM · 서비스 설계" },
-    heroSub2: { en: "An execution partner with a dev & design team", ko: "개발자·디자이너 팀을 직접 운영하는 실행형 파트너" },
+    heroSub2: { en: "An execution-focused partner who leads real collaboration with developers and designers", ko: "개발자·디자이너 팀을 직접 운영하는 실행형 파트너" },
     heroBtn1: { en: "VIEW PROJECTS →", ko: "프로젝트 보기 →" },
 
     // About
-    aboutTitle1: { en: "From moderator to", ko: "모더레이터에서 시작해," },
-    aboutTitle2: { en: "a leader who executes.", ko: "팀을 이끄는 실행자가 되었습니다." },
+    aboutTitle1: { en: "Not just a planner —", ko: "모더레이터에서 시작해," },
+    aboutTitle2: { en: "an execution partner.", ko: "팀을 이끄는 실행자가 되었습니다." },
     aboutDesc: {
       en: `In 2021, I started as a moderator at <span style="color:#e8e6e3;font-weight:500">Metakongz</span>, Korea's top NFT project. The lessons I learned on the front lines — engaging with users firsthand — became the foundation of my planning skills and operational instincts.<br/><br/>I grew into a project manager, leading NFT project planning directly, and built real-world expertise across <span style="color:#e8e6e3;font-weight:500">community ops → PM → service design</span> at multiple blockchain companies.<br/><br/>Now, I've taken all that experience and <span style="color:#00ff88;font-weight:500">built my own team — recruiting overseas developers and designers, paying them directly, and building my own projects from scratch.</span>`,
       ko: `2021년, 대한민국 최고의 NFT 프로젝트 <span style="color:#e8e6e3;font-weight:500">Metakongz</span>에서 모더레이터로 시작했습니다. 커뮤니티 현장에서 유저와 부딪히며 배운 것들이 지금의 기획력과 운영 감각의 뿌리가 되었습니다.<br/><br/>이후 프로젝트 매니저로 성장하며 NFT 프로젝트 기획을 직접 주도했고, 여러 블록체인 회사를 거치며 <span style="color:#e8e6e3;font-weight:500">커뮤니티 운영 → PM → 서비스 기획</span>까지 실전 역량을 쌓아왔습니다.<br/><br/>그리고 지금, 그 모든 경험을 기반으로 <span style="color:#00ff88;font-weight:500"> 해외 개발자·디자이너를 직접 찾아 팀을 꾸리고, 급여를 지급하며, 나만의 프로젝트를 만들어가고 있습니다.</span>`
@@ -80,7 +80,7 @@ export default function Portfolio() {
         { year: "2022–26", title: "Multiple NFT/Blockchain Projects", subtitle: "Real-world Experience", desc: "Gained diverse experience across multiple blockchain companies — community ops, PM, service planning. Currently active as a freelancer on an RWA project.", color: "#8888ff", tags: ["Blockchain", "Multi-project", "RWA", "Freelance"] },
         { year: "2025–26", title: "Overseas Team Building & VATICA", subtitle: "From Planner to Execution Partner", desc: "Recruited overseas developers and designers to build a team. Working with 1 blockchain full-stack dev, 2 web devs, and 1 web designer to plan and develop the personal project VATICA.", color: "#ff8800", tags: ["Team Building", "VATICA", "Overseas Talent"] },
         { year: "2026", title: "AI Copy Trading Bot", subtitle: "Live Operations & Profit Verified", desc: "Designed proprietary scoring metrics from years of futures trading experience. Built an AI-powered system automating the entire pipeline from target discovery to copy trading. Live with real capital, generating profit.", color: "#ff4488", tags: ["AI", "Futures Trading", "Scoring System", "Automated Trading"] },
-        { year: "2026", title: "Looking for the right team", subtitle: "Yes, that means you", desc: "There are plenty of planners. But not many who build teams, create systems, and actually make things run. If you're looking for an execution partner for your next project — let's talk.", color: "#00ff88", tags: ["Planning → Execution", "Web3", "PM", "Available"] },
+        { year: "2026", title: "Looking for the right opportunity", subtitle: "Yes, that means you", desc: "When you work with me, you don't just get ideas — you get execution that moves projects forward. If you're looking for an execution partner, let's talk.", color: "#00ff88", tags: ["Planning → Execution", "Web3", "PM", "Available"] },
       ],
       ko: [
         { year: "2021", title: "Metakongz 입사", subtitle: "대한민국 최고의 NFT 프로젝트", desc: "모더레이터로 시작. 커뮤니티 현장에서 유저와 직접 소통하며 Web3 업계에 첫 발을 내딛다.", color: "#00ff88", tags: ["Moderator", "Community", "NFT"] },
@@ -94,8 +94,8 @@ export default function Portfolio() {
     journeyNow: { en: "In progress — VATICA development & AI bot operations", ko: "현재 진행형 — VATICA 개발 & AI 봇 운용 중" },
 
     // Services
-    servicesTitle1: { en: "Hand it over.", ko: "맡기면" },
-    servicesTitle2: { en: "It gets done.", ko: "굴러갑니다." },
+    servicesTitle1: { en: "From planning", ko: "맡기면" },
+    servicesTitle2: { en: "to execution.", ko: "굴러갑니다." },
     serviceItems: {
       en: [
         { num: "01", title: "Service Planning & PM", items: ["Service architecture design", "Feature specs & UX flows", "Operational policy setup", "Roadmap planning & mgmt"] },
@@ -112,8 +112,8 @@ export default function Portfolio() {
     },
 
     // Projects
-    projectsTitle1: { en: "Not just ideas.", ko: "아이디어가 아니라," },
-    projectsTitle2: { en: "Real deliverables.", ko: "결과물입니다." },
+    projectsTitle1: { en: "Not just ideas —", ko: "아이디어가 아니라," },
+    projectsTitle2: { en: "real execution.", ko: "결과물입니다." },
     vaticaDesc: {
       en: `A blockchain-based <span style="color:#e8e6e3;font-weight:500">Decentralized Prediction Market Protocol</span>. A P2P structure where users take Yes/No positions on real-world events (politics, sports, crypto, finance, tech). I led the entire project — service architecture, UX flows, feature planning, TOS/legal docs, operational policies — and am developing it with an overseas team. <span style="color:#00ff88;font-weight:500">IP agreements and equity distribution contracts were completed before development began</span>, with <span style="color:#00ff88;font-weight:500">equity structured under the future VATICA entity</span> to prepare for investment.`,
       ko: `블록체인 기반의 <span style="color:#e8e6e3;font-weight:500">탈중앙화 예측 마켓(Prediction Market) 프로토콜</span>. 실제 세계의 이벤트(정치, 스포츠, 크립토, 금융, 기술)에 대해 유저가 Yes/No 포지션을 잡고 거래하는 P2P 구조. 서비스 구조 설계, UX 흐름, 기능 기획, TOS/법률 문서, 운영 정책까지 전반을 직접 기획하고, 해외 팀과 함께 개발을 진행 중. 개발 착수 전 <span style="color:#00ff88;font-weight:500">IP 계약서와 지분 분배 계약서를 모두 완료</span>한 프로젝트이며, 미래 투자 유치를 고려하여 <span style="color:#00ff88;font-weight:500">지분은 향후 설립될 VATICA 법인 소유</span>로 설계해둔 상태.`
@@ -167,7 +167,7 @@ export default function Portfolio() {
     },
 
     // Team
-    teamTitle: { en: "Not a one-man show.", ko: "혼자가 아닙니다." },
+    teamTitle: { en: "I work with a real team.", ko: "혼자가 아닙니다." },
     teamDesc: {
       en: "A real team I've been running for over a year, with overseas talent I recruited directly.<br/>I pay salaries and connect planning → development → design → execution.",
       ko: "해외에서 직접 인력을 찾아 1년째 운영 중인 실제 협업 팀입니다.<br/>직접 급여를 지급하며 기획 → 개발 → 디자인 → 실행까지 연결합니다."
@@ -187,16 +187,16 @@ export default function Portfolio() {
       ],
     },
     teamQuote1: {
-      en: "Hand it to this person, and you don't just get a plan —<br/>the project actually moves.",
+      en: "When you work with me, you don't just get ideas —<br/>you get execution that actually moves projects forward.",
       ko: "이 사람에게 맡기면 기획만 나오는 게 아니라,<br/>실제로 프로젝트가 굴러간다."
     },
-    teamQuote2: { en: "— That's the value I bring.", ko: "— 이것이 내가 주는 가치입니다." },
+    teamQuote2: { en: "— That's how I work.", ko: "— 이것이 내가 주는 가치입니다." },
 
     // Contact
-    contactTitle1: { en: "Let's build", ko: "프로젝트를 함께" },
-    contactTitle2: { en: "something together.", ko: "굴려봅시다." },
+    contactTitle1: { en: "Let's move your", ko: "프로젝트를 함께" },
+    contactTitle2: { en: "project forward.", ko: "굴려봅시다." },
     contactDesc: {
-      en: "If you need Web3 project planning, PM, or service architecture —<br/>feel free to reach out.",
+      en: "If you need support with blockchain/Web3 project planning, PM, or service structure design,<br/>feel free to reach out.",
       ko: "블록체인/Web3 프로젝트 기획, PM, 서비스 구조 설계가 필요하시다면<br/>편하게 연락 주세요."
     },
     contactBtn1: { en: "SEND EMAIL →", ko: "이메일 보내기 →" },
@@ -271,6 +271,7 @@ export default function Portfolio() {
 
         /* Mobile Responsive */
         @media(max-width:768px) {
+          .hero-section { padding-top: 100px !important; }
           .hero-stats { gap: 24px !important; }
           .hero-stats > div > div:first-child { font-size: 28px !important; }
           .about-grid { grid-template-columns: 1fr !important; }
@@ -284,8 +285,36 @@ export default function Portfolio() {
           .vatica-header { flex-direction: column !important; }
           .vatica-roles-grid { grid-template-columns: 1fr 1fr !important; }
           .footer-wrap { flex-direction: column !important; text-align: center !important; gap: 12px !important; }
+          /* Image galleries: horizontal scroll */
+          .vatica-gallery {
+            display: flex !important; overflow-x: auto !important;
+            grid-template-columns: unset !important; gap: 12px !important;
+            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
+          }
+          .vatica-gallery > div {
+            min-width: 280px !important; flex-shrink: 0 !important;
+            scroll-snap-align: start;
+          }
+          .vatica-gallery img { min-height: 200px; object-fit: cover; }
+          .bot-gallery {
+            display: flex !important; overflow-x: auto !important;
+            grid-template-columns: unset !important; gap: 12px !important;
+            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
+          }
+          .bot-gallery > div {
+            min-width: 250px !important; flex-shrink: 0 !important;
+            scroll-snap-align: start;
+          }
+          .bot-gallery img { min-height: 180px; object-fit: cover; }
+          /* Scrollbar styling for galleries */
+          .vatica-gallery::-webkit-scrollbar, .bot-gallery::-webkit-scrollbar { height: 4px; }
+          .vatica-gallery::-webkit-scrollbar-track, .bot-gallery::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 2px; }
+          .vatica-gallery::-webkit-scrollbar-thumb, .bot-gallery::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
         }
         @media(max-width:480px) {
+          .hero-section { padding-top: 110px !important; }
           .hero-stats { gap: 20px !important; }
           .hero-stats > div > div:first-child { font-size: 24px !important; }
           .vatica-features-grid { grid-template-columns: 1fr !important; }
@@ -294,6 +323,8 @@ export default function Portfolio() {
           .vatica-roles-grid { grid-template-columns: 1fr !important; }
           .contact-buttons { flex-direction: column !important; align-items: center !important; }
           .contact-buttons a, .contact-buttons button { width: 100% !important; justify-content: center !important; }
+          .vatica-gallery > div { min-width: 260px !important; }
+          .bot-gallery > div { min-width: 230px !important; }
         }
 
         /* Mobile menu overlay */
@@ -386,7 +417,7 @@ export default function Portfolio() {
       )}
 
       {/* HERO */}
-      <section id="home" style={{
+      <section id="home" className="hero-section" style={{
         minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center",
         padding: "0 clamp(20px,8vw,120px)", position: "relative", overflow: "hidden",
       }}>
@@ -637,7 +668,7 @@ export default function Portfolio() {
               <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 App Design
               </div>
-              <div className="vatica-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 12 }}>
+              <div className="vatica-gallery" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 12 }}>
                 <div style={{
                   borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
                   background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
@@ -763,7 +794,7 @@ export default function Portfolio() {
               <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 Live System
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+              <div className="bot-gallery" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
                 <div style={{
                   borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
                   background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
