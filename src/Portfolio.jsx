@@ -57,12 +57,14 @@ export default function Portfolio() {
     },
     profileCareer: {
       en: [
-        { year: "2021–2024", desc: "Joined Metakongz and worked on multiple NFT projects in execution-focused roles" },
+        { year: "2021–2022", desc: "Worked at Metakongz and contributed to multiple NFT projects" },
+        { year: "2022–2024", desc: "Worked at a blockchain company, focusing on NFT project planning" },
         { year: "2024", desc: "Joined Art In Motion, working on NFT projects and planning for a licensed crypto casino" },
         { year: "2025–Present", desc: "Currently developing personal Web3 projects and AI-based automation systems" },
       ],
       ko: [
-        { year: "2021–2024", desc: "메타콩즈 입사 및 다수 NFT 프로젝트 실무 담당" },
+        { year: "2021–2022", desc: "메타콩즈 입사 및 다수 NFT 프로젝트 담당" },
+        { year: "2022–2024", desc: "블록체인 기업 입사 및 NFT 프로젝트 기획" },
         { year: "2024", desc: "아트인모션 입사, NFT 프로젝트 및 라이선스 보유 크립토 카지노 기획 담당" },
         { year: "2025–현재", desc: "개인 Web3 프로젝트 및 AI 기반 자동화 시스템 개발 진행 중" },
       ],
