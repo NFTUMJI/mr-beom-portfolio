@@ -892,7 +892,7 @@ export default function Portfolio() {
           <div style={{ padding: "clamp(28px,4vw,48px)", background: "#111", border: "1px solid #1a1a1a", borderRadius: 12 }}>
             <div className="tag" style={{ borderColor: "#8888ff50", color: "#8888ff", marginBottom: 16 }}>EXPERIENCE</div>
             <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, marginBottom: 12, letterSpacing: -0.5 }}>
-              Web3 프로젝트 다수 경험
+              {lang === "en" ? "Web3 Project Experience" : "Web3 프로젝트 다수 경험"}
             </h3>
             <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.9, maxWidth: 720, marginBottom: 24, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.web3Desc) }} />
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
