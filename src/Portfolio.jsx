@@ -274,8 +274,8 @@ export default function Portfolio() {
         @media(min-width:769px) {
           .vatica-gallery > div { min-width: 220px !important; }
           .vatica-gallery img { height: 420px !important; }
-          .bot-gallery > div { min-width: 220px !important; }
-          .bot-gallery img { height: 400px !important; }
+          .bot-gallery > div { min-width: 300px !important; }
+          .bot-gallery img { height: 550px !important; }
         }
 
         /* Mobile Responsive */
