@@ -270,6 +270,14 @@ export default function Portfolio() {
         .btn-outline:hover { border-color:#00ff88; color:#00ff88; }
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
+        /* Desktop gallery sizing */
+        @media(min-width:769px) {
+          .vatica-gallery > div { min-width: 220px !important; }
+          .vatica-gallery img { height: 420px !important; }
+          .bot-gallery > div { min-width: 220px !important; }
+          .bot-gallery img { height: 400px !important; }
+        }
+
         /* Mobile Responsive */
         @media(max-width:768px) {
           .hero-section { padding-top: 120px !important; }
