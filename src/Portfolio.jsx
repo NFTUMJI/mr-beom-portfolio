@@ -419,7 +419,7 @@ export default function Portfolio() {
       {/* HERO */}
       <section id="home" className="hero-section" style={{
         minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "0 clamp(20px,8vw,120px)", position: "relative", overflow: "hidden",
+        padding: "0 clamp(20px,8vw,120px)", paddingTop: 100, position: "relative", overflow: "hidden",
       }}>
         <div style={{
           position: "absolute", top: "15%", right: "-5%", width: 500, height: 500,
