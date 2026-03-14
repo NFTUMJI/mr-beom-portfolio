@@ -827,7 +827,7 @@ export default function Portfolio() {
             }} />
             <div className="tag" style={{ borderColor: "#ff880050", color: "#ff8800", marginBottom: 16 }}>LIVE & OPERATING</div>
             <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, marginBottom: 4, letterSpacing: -0.5 }}>
-              AI Copy Trading Bot
+              {lang === "en" ? "AI Copy Trading Bot" : "AI 카피 트레이딩 봇"}
             </h3>
             <p style={{ fontSize: 14, color: "#ff8800", fontWeight: 500, marginBottom: 20, letterSpacing: 0.5 }}>
               Automated Trading System — On-chain Tracking · Telegram Control · Live
