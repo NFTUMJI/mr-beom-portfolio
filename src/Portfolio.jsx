@@ -519,7 +519,7 @@ export default function Portfolio() {
         <FadeIn>
           <img src="/pfp.jpg" alt="BEOM" style={{ width: 140, height: 140, borderRadius: "50%", border: "3px solid #00ff8840", margin: "0 auto 24px", display: "block", objectFit: "cover" }} />
           <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 32, fontWeight: 800, textAlign: "center", marginBottom: 12 }}>BEOM</div>
-          <p style={{ fontSize: 15, color: "#aaa", textAlign: "center", maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.7 }}>
+          <p style={{ fontSize: 17, color: "#00ff8899", textAlign: "center", maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.7 }}>
             {L(t.profileIntro)}
           </p>
         </FadeIn>
