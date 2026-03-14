@@ -669,7 +669,7 @@ export default function Portfolio() {
               <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 App Design
               </div>
-              <div className="vatica-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", paddingBottom: 8 }}>
+              <div className="vatica-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
                 {[
                   { src: "/vatica-01.jpg", label: "Wallet Connect" },
                   { src: "/vatica-02.jpg", label: "Portfolio & Earnings" },
@@ -679,7 +679,7 @@ export default function Portfolio() {
                   <div key={i} style={{
                     borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
                     background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                    width: 160, flexShrink: 0, scrollSnapAlign: "start",
+                    width: 160, flexShrink: 0, scrollSnapAlign: "center", scrollSnapStop: "always",
                   }}
                   onClick={() => setLightboxImg(item.src)}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8830"; e.currentTarget.style.transform = "translateY(-2px)"; }}
@@ -768,7 +768,7 @@ export default function Portfolio() {
               <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
                 Live System
               </div>
-              <div className="bot-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", paddingBottom: 8 }}>
+              <div className="bot-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
                 {[
                   { src: "/bot-01.jpg", label: "AI Report · VIP" },
                   { src: "/bot-02.jpg", label: "Target Scoring · 87" },
@@ -777,7 +777,7 @@ export default function Portfolio() {
                   <div key={i} style={{
                     borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
                     background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                    width: 160, flexShrink: 0, scrollSnapAlign: "start",
+                    width: 160, flexShrink: 0, scrollSnapAlign: "center", scrollSnapStop: "always",
                   }}
                   onClick={() => setLightboxImg(item.src)}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff880030"; e.currentTarget.style.transform = "translateY(-2px)"; }}
