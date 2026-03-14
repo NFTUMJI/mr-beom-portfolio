@@ -61,8 +61,8 @@ export default function Portfolio() {
       en: [
         { icon: "◆", title: "Battle-tested Instincts", desc: "Started on the community front lines. A planner who learned what users want through hands-on experience." },
         { icon: "◇", title: "Planning → Execution", desc: "Service architecture, UX flows, operational policies — I organize and lead everything needed to kick off development." },
-        { icon: "●", title: "AI System Build & Ops", desc: "Designed proprietary scoring metrics from futures trading experience, then automated the entire copy-trading pipeline with AI. Live with real capital." },
-        { icon: "▲", title: "Team Building & Ops", desc: "Recruited 4 overseas team members, paying them directly, and running a project for over a year." },
+        { icon: "●", title: "AI System Build & Ops", desc: "Planned and built an AI-powered copy trading bot. Operating in a live environment while validating performance and risk management framework. More than just planning — building systems that actually work." },
+        { icon: "▲", title: "Collaboration Docs & Ops Structure", desc: "Experience organizing and managing collaboration documents and operational structure for project execution, including NDA, IP assignment, and external contributor agreements." },
       ],
       ko: [
         { icon: "◆", title: "현장에서 쌓은 감각", desc: "커뮤니티 최전선에서 시작. 유저가 무엇을 원하는지 몸으로 익힌 기획자." },
@@ -81,7 +81,7 @@ export default function Portfolio() {
         { year: "2022–26", title: "Multiple NFT/Blockchain Projects", subtitle: "Real-world Experience", desc: "Gained diverse experience across multiple blockchain companies — community ops, PM, service planning. Currently active as a freelancer on an RWA project.", color: "#8888ff", tags: ["Blockchain", "Multi-project", "RWA", "Freelance"] },
         { year: "2025–26", title: "Overseas Team Building & VATICA", subtitle: "From Planner to Execution Partner", desc: "Recruited overseas developers and designers to build a team. Working with 1 blockchain full-stack dev, 2 web devs, and 1 web designer to plan and develop the personal project VATICA.", color: "#ff8800", tags: ["Team Building", "VATICA", "Overseas Talent"] },
         { year: "2026", title: "AI Copy Trading Bot", subtitle: "Live Operations & Profit Verified", desc: "Designed proprietary scoring metrics from years of futures trading experience. Built an AI-powered system automating the entire pipeline from target discovery to copy trading. Live with real capital, generating profit.", color: "#ff4488", tags: ["AI", "Futures Trading", "Scoring System", "Automated Trading"] },
-        { year: "2026", title: "Looking for the right opportunity", subtitle: "Yes, that means you", desc: "When you work with me, you don't just get ideas — you get execution that moves projects forward. If you're looking for an execution partner, let's talk.", color: "#00ff88", tags: ["Planning → Execution", "Web3", "PM", "Available"] },
+        { year: "2026", title: "Looking for the right opportunity", subtitle: "Yes, that means you", desc: "When you work with me, projects don't stop at ideas — they move into real execution. If you're looking for an execution partner, let's talk.", color: "#00ff88", tags: ["Planning → Execution", "Web3", "PM", "Available"] },
       ],
       ko: [
         { year: "2021", title: "Metakongz 입사", subtitle: "대한민국 최고의 NFT 프로젝트", desc: "모더레이터로 시작. 커뮤니티 현장에서 유저와 직접 소통하며 Web3 업계에 첫 발을 내딛다.", color: "#00ff88", tags: ["Moderator", "Community", "NFT"] },
@@ -141,13 +141,13 @@ export default function Portfolio() {
       ko: ["서비스 구조 설계", "기능 명세 작성", "UX 흐름 기획", "TOS/법률 문서 작성", "운영 정책 수립", "디자인 디렉션", "해외 팀 관리", "IP 계약 · 지분 설계"],
     },
     botDesc: {
-      en: `Designed proprietary scoring metrics based on <span style="color:#e8e6e3;font-weight:500">years of futures trading experience</span>, creating <span style="color:#ff8800;font-weight:500">custom indicators and a scoring framework</span> to evaluate copy targets. <span style="color:#e8e6e3;font-weight:500">Tracks all active wallets on-chain</span> and automates the full pipeline — target discovery → observation → data collection → copy trading — using AI. Integrated with Telegram for <span style="color:#e8e6e3;font-weight:500">easy control and real-time monitoring</span>, with <span style="color:#e8e6e3;font-weight:500">high-level security design</span> against hacking. Live with real capital, generating profit.`,
+      en: `Designed proprietary scoring metrics based on <span style="color:#e8e6e3;font-weight:500">years of futures trading experience</span>, creating <span style="color:#ff8800;font-weight:500">custom indicators and a scoring framework</span> to evaluate copy targets. <span style="color:#e8e6e3;font-weight:500">Tracks all active wallets on-chain</span> and automates the full pipeline — target discovery → observation → data collection → copy trading — using AI. Integrated with Telegram for <span style="color:#e8e6e3;font-weight:500">easy control and real-time monitoring</span>, with <span style="color:#e8e6e3;font-weight:500">high-level security design</span> against hacking. Operating in a live environment while validating performance and risk management structure. It demonstrates not just planning ability, but the execution required to design and operate systems that actually work.`,
       ko: `<span style="color:#e8e6e3;font-weight:500">수년간의 선물 트레이딩 경력</span>에서 축적한 노하우를 기반으로, 카피 대상의 성과를 평가하는 <span style="color:#ff8800;font-weight:500">각종 개인 지표와 점수 체계</span>를 직접 설계. <span style="color:#e8e6e3;font-weight:500">온체인에서 활동이 있는 지갑들을 추적</span>하여 카피 대상 탐색 → 관찰 → 데이터 수집 → 카피 매매까지 이어지는 전체 파이프라인을 AI를 활용하여 자동화. 텔레그램 앱과 연동하여 <span style="color:#e8e6e3;font-weight:500">손쉬운 조작과 실시간 모니터링</span>이 가능하며, 해킹 방지를 위한 <span style="color:#e8e6e3;font-weight:500">높은 수준의 보안 설계</span>까지 적용. 실제 운용 환경에서 시스템을 운영하며 성능과 리스크 관리 구조를 검증하고 있는 프로젝트.`
     },
     botStats: {
       en: [
         { label: "STATUS", value: "LIVE", color: "#00ff88" },
-        { label: "BASED ON", value: "Futures Trading Exp.", color: "#ff8800" },
+        { label: "BASED ON", value: "Futures Trading Experience", color: "#ff8800" },
         { label: "CORE", value: "On-chain · Scoring", color: "#ff4488" },
         { label: "OPS", value: "Telegram · Security", color: "#00aaff" },
       ],
@@ -170,7 +170,7 @@ export default function Portfolio() {
     // Team
     teamTitle: { en: "I work with a real team.", ko: "혼자가 아닙니다." },
     teamDesc: {
-      en: "A real team I've been running for over a year, with overseas talent I recruited directly.<br/>I pay salaries and connect planning → development → design → execution.",
+      en: "I have a collaboration structure that connects planning, development, design, and execution.<br/>This is not just a network, but a real working team actively operated through ongoing project collaboration.",
       ko: "기획 → 개발 → 디자인 → 실행까지 연결 가능한 협업 구조를 갖추고 있습니다.<br/>단순 네트워크가 아니라, 실제 비용 집행 기반으로 운영 중인 협업 팀입니다."
     },
     teamMembers: {
@@ -188,10 +188,10 @@ export default function Portfolio() {
       ],
     },
     teamQuote1: {
-      en: "When you work with me, you don't just get ideas —<br/>you get execution that actually moves projects forward.",
+      en: "Working with me does not stop at planning —<br/>it leads into real execution.",
       ko: "이 사람과 함께하면 기획에서 끝나지 않고,<br/>실제 실행 단계까지 이어진다."
     },
-    teamQuote2: { en: "— That's how I work.", ko: "— 이것이 제가 드리는 가치입니다." },
+    teamQuote2: { en: "— That's how I deliver value.", ko: "— 이것이 제가 드리는 가치입니다." },
 
     // Contact
     contactTitle1: { en: "Let's move your", ko: "프로젝트를 함께" },
