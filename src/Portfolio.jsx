@@ -270,11 +270,20 @@ export default function Portfolio() {
         .btn-outline:hover { border-color:#00ff88; color:#00ff88; }
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
-        /* Desktop gallery sizing */
+        /* Desktop layout */
+        section, footer { max-width: 1200px; margin-left: auto; margin-right: auto; }
         @media(min-width:769px) {
-          .vatica-gallery > div { min-width: 220px !important; }
+          .vatica-gallery {
+            display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
+            overflow-x: visible !important;
+          }
+          .vatica-gallery > div { min-width: unset !important; width: auto !important; }
           .vatica-gallery img { height: 420px !important; }
-          .bot-gallery > div { min-width: 300px !important; }
+          .bot-gallery {
+            display: grid !important; grid-template-columns: repeat(3, 1fr) !important;
+            overflow-x: visible !important;
+          }
+          .bot-gallery > div { min-width: unset !important; width: auto !important; }
           .bot-gallery img { height: 550px !important; }
         }
 
@@ -498,7 +507,7 @@ export default function Portfolio() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p style={{ fontSize: 17, color: "#aaa", lineHeight: 2, maxWidth: 760, marginBottom: 48, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.aboutDesc) }} />
+          <p style={{ fontSize: 17, color: "#aaa", lineHeight: 2, maxWidth: 700, marginBottom: 48, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.aboutDesc) }} />
         </FadeIn>
 
         <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
