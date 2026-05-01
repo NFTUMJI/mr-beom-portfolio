@@ -25,3 +25,6 @@ dist-ssr
 
 # Backup files
 *.backup.*
+
+# Claude Code
+.claude/

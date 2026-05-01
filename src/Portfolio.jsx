@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const SECTIONS = ["HOME", "ABOUT", "JOURNEY", "SERVICES", "PROJECTS", "TEAM", "CONTACT"];
+const SECTIONS = ["HOME", "MILLIONSCAN", "ABOUT", "PROJECTS", "CAREER", "CAPABILITIES", "WORKFLOW", "CONTACT"];
 
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
@@ -40,194 +40,281 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("HOME");
   const [lang, setLang] = useState("en");
   const [lightboxImg, setLightboxImg] = useState(null);
+  const [profileLightbox, setProfileLightbox] = useState(null);
 
   const t = {
-    // Hero
-    heroTag: { en: "BLOCKCHAIN · WEB3 · PM · EXECUTION", ko: "BLOCKCHAIN · WEB3 · PM · EXECUTION" },
-    heroTitle1: { en: "I don't stop at planning.", ko: "기획에서 끝나지 않는다." },
-    heroTitle2: { en: "I drive execution.", ko: "실행까지 굴린다." },
-    heroSub1: { en: "Web3 Project Planning · PM · Service Design", ko: "Web3 프로젝트 기획 · PM · 서비스 설계" },
-    heroSub2: { en: "An execution-focused partner who leads real collaboration with developers and designers", ko: "개발자·디자이너 팀을 직접 운영하는 실행형 파트너" },
-    heroBtn1: { en: "VIEW PROJECTS →", ko: "프로젝트 보기 →" },
+    // Hero — 한 줄 포지셔닝만
+    heroTag: { en: "WEB3 PM · BUILDING WITH AI", ko: "WEB3 PM · BUILDING WITH AI" },
+    heroTitle1: { en: "I plan, I build,", ko: "기획하고, 빌드하고," },
+    heroTitle2: { en: "I ship.", ko: "출시한다." },
+    heroSub1: { en: "Web3 PM · AI-assisted product builder", ko: "Web3 프로덕트 매니저 · AI와 함께 빌드" },
+    heroSub2: { en: "Started at Metakongz in 2021. 5+ years of experience across NFT/blockchain projects as a PM and contributor. Now building products solo with AI as my development partner — including MillionScan, soft-launched at millionscan.com.", ko: "2021년 한국 NFT 1세대 현장에서 시작해, 지금은 AI와 함께 라이브 프로덕트를 빌드하고 있습니다." },
+    heroBtn1: { en: "VIEW LIVE PRODUCT →", ko: "라이브 프로덕트 보기 →" },
+    heroBtn2: { en: "PROJECTS", ko: "프로젝트" },
 
-    // Profile
+    // Profile — 짧게 압축 (About로 흡수 전 단계)
     profileIntro: {
-      en: "A hands-on partner connecting blockchain/Web3 service planning, project management, and execution",
-      ko: "블록체인/Web3 서비스 기획부터 PM, 실행까지 연결하는 실무형 파트너",
+      en: "Started as a moderator at Metakongz in 2021. Now an AI-assisted Web3 product builder.",
+      ko: "2021년 메타콩즈 모더레이터로 시작. 지금은 AI와 함께 빌드하는 Web3 프로덕트 빌더.",
     },
     profileCareer: {
       en: [
-        { year: "2021–2022", desc: "Worked at Metakongz and contributed to multiple NFT projects" },
-        { year: "2022–2024", desc: "Worked at a blockchain company, focusing on NFT project planning" },
-        { year: "2024", desc: "Joined Art In Motion, working on NFT projects and planning for a licensed crypto casino" },
-        { year: "2025–Present", desc: "Currently developing personal Web3 projects and AI-based automation systems" },
+        { year: "2021–22", desc: "Metakongz — moderator + project planning" },
+        { year: "2024", desc: "Art In Motion — NFT structure design & planning" },
+        { year: "2024–26", desc: "Punkvism Holdings — NFT structure design across multiple drops" },
+        { year: "2026–", desc: "MillionScan soft-launched · AI copy trading bot live-tested" },
       ],
       ko: [
-        { year: "2021–2022", desc: "메타콩즈 입사 및 다수 NFT 프로젝트 담당" },
-        { year: "2022–2024", desc: "블록체인 기업 입사 및 NFT 프로젝트 기획" },
-        { year: "2024", desc: "아트인모션 입사, NFT 프로젝트 및 라이선스 보유 크립토 카지노 기획 담당" },
-        { year: "2025–현재", desc: "개인 Web3 프로젝트 및 AI 기반 자동화 시스템 개발 진행 중" },
+        { year: "2021–22", desc: "메타콩즈 — 모더레이터 + 프로젝트 기획" },
+        { year: "2024", desc: "아트인모션 — NFT 구조 설계 & 기획" },
+        { year: "2024–26", desc: "펑크비즘 홀딩스 — 다수 드랍의 NFT 구조 설계" },
+        { year: "2026–", desc: "MillionScan 소프트런칭 · AI 카피 봇 라이브 테스트" },
       ],
     },
 
-    // About
+    // MillionScan — Featured Product (Hero 바로 다음)
+    msStatusLabel: { en: "LIVE PRODUCT · SOFT-LAUNCHED", ko: "라이브 프로덕트 · 소프트런칭" },
+    msSubtitle: { en: "On-chain Perpetual Futures Trader Analytics", ko: "온체인 Perpetual Futures 트레이더 분석" },
+    msTagline: {
+      en: "A live SaaS I built solo, end-to-end, with AI as my development partner.",
+      ko: "AI를 개발 파트너로 활용해 단독으로 끝까지 빌드한 라이브 SaaS.",
+    },
+    msDesc: {
+      en: `Tracks <span style="color:#e8e6e3;font-weight:500">21,000+ on-chain perpetual futures traders</span> with a <span style="color:#e8e6e3;font-weight:500">68-point composite scoring system</span> (Profit Factor, Sharpe, MDD, Win Rate, Avg PnL). Automatic bot and wash-trading filters keep the dataset reliable. Liquidation Heatmap visualizes real-time liquidation prices.<br/><br/>Built <span style="color:#e8e6e3;font-weight:500">API-first</span> — REST + WebSocket + Python/TypeScript SDKs + OpenAPI spec — designed as a developer-grade data platform for AI-assisted research and trading workflows (Claude Code, Cursor, Cline, Aider). Crypto billing via NOWPayments (USDC).<br/><br/>Built end-to-end by me — service architecture, data pipelines, scoring engine, REST/WebSocket API, SDKs, web UI, and billing — with AI as my development partner.`,
+      ko: `<span style="color:#e8e6e3;font-weight:500">21,000+ 온체인 Perpetual Futures 트레이더</span>를 <span style="color:#e8e6e3;font-weight:500">68점 컴포지트 스코어링 시스템</span>(Profit Factor, Sharpe, MDD, Win Rate, Avg PnL)으로 평가. 봇·자전거래성 트레이더를 자동 필터링해 데이터 품질을 유지합니다. Liquidation Heatmap으로 실시간 청산 가격을 시각화합니다.<br/><br/><span style="color:#e8e6e3;font-weight:500">API 우선 설계</span> — REST + WebSocket + Python/TypeScript SDK + OpenAPI spec — Claude Code, Cursor, Cline, Aider 등 AI 코딩 워크플로우를 위한 개발자 친화적인 데이터 플랫폼. NOWPayments(USDC) 크립토 결제.<br/><br/>서비스 구조, 데이터 파이프라인, 스코어링 엔진, REST/WebSocket API, SDK, 웹 UI, 결제까지 — AI를 개발 파트너로 활용해 본인이 직접 end-to-end로 빌드했습니다.`
+    },
+    msStats: {
+      en: [
+        { label: "STATUS", value: "Live · Stabilizing", color: "#00ff88" },
+        { label: "TRADERS TRACKED", value: "21,000+", color: "#00aaff" },
+        { label: "API", value: "REST + WS + SDKs", color: "#ff8800" },
+        { label: "BUILT BY", value: "Solo · AI-assisted", color: "#ff4488" },
+      ],
+      ko: [
+        { label: "상태", value: "라이브 · 안정화 중", color: "#00ff88" },
+        { label: "추적 트레이더", value: "21,000+", color: "#00aaff" },
+        { label: "API", value: "REST + WS + SDK", color: "#ff8800" },
+        { label: "빌드 방식", value: "단독 빌드 (AI 활용)", color: "#ff4488" },
+      ],
+    },
+    msImageCaptions: {
+      en: ["Main dashboard — Big Moves & Asset Bias", "Liquidation Heatmap — real-time density viz", "Trader detail — score, ROI, positions", "Watchlist — alerts & top picks", "Developer API — curated, scored, filtered", "API reference — REST + WebSocket docs"],
+      ko: ["메인 대시보드 — Big Moves & Asset Bias", "Liquidation Heatmap — 실시간 청산 밀도 시각화", "트레이더 상세 — 스코어·ROI·포지션", "워치리스트 — 알림 & Top Picks", "Developer API — 큐레이션·스코어링·필터링", "API 레퍼런스 — REST + WebSocket 문서"],
+    },
+    msTags: {
+      en: ["On-chain Analytics", "Perpetual Futures", "68-point Scoring", "API-first", "REST + WebSocket", "Python · TypeScript SDK", "Liquidation Heatmap", "USDC Billing"],
+      ko: ["온체인 분석", "Perpetual Futures", "68점 스코어링", "API 우선", "REST + WebSocket", "Python · TypeScript SDK", "Liquidation Heatmap", "USDC 결제"],
+    },
+
+    // About — 커리어 요약 (Hero와 다른 역할)
     aboutTitle1: { en: "Not just a planner —", ko: "모더레이터에서 시작해," },
-    aboutTitle2: { en: "an execution partner.", ko: "팀을 이끄는 실행자가 되었습니다." },
+    aboutTitle2: { en: "I build and ship.", ko: "AI와 함께, 직접 빌드합니다." },
     aboutDesc: {
-      en: `During the NFT boom in 2021, I started as a moderator at <span style="color:#e8e6e3;font-weight:500">Metakongz</span>, one of the largest NFT projects in South Korea. The lessons I learned on the front lines — engaging with users firsthand — became the foundation of my planning skills and operational instincts.<br/><br/>I grew into a project manager, leading NFT project planning directly, and built real-world expertise across <span style="color:#e8e6e3;font-weight:500">community ops → PM → service design</span> at multiple blockchain companies.<br/><br/>Now, I've taken all that experience and <span style="color:#00ff88;font-weight:500">built my own team — recruiting overseas developers and designers, paying them directly, and building my own projects from scratch.</span>`,
-      ko: `2021년 NFT 붐 시기, 대한민국에서 가장 큰 NFT 프로젝트 중 하나였던 <span style="color:#e8e6e3;font-weight:500">Metakongz</span>에서 모더레이터로 시작했습니다. 커뮤니티 현장에서 유저와 부딪히며 배운 것들이 지금의 기획력과 운영 감각의 뿌리가 되었습니다.<br/><br/>이후 프로젝트 매니저로 성장하며 NFT 프로젝트 기획을 직접 주도했고, 여러 블록체인 회사를 거치며 <span style="color:#e8e6e3;font-weight:500">커뮤니티 운영 → PM → 서비스 기획</span>까지 실전 역량을 쌓아왔습니다.<br/><br/>그리고 지금, 그 모든 경험을 기반으로 <span style="color:#00ff88;font-weight:500"> 해외 개발자·디자이너를 직접 찾아 팀을 꾸리고, 급여를 지급하며, 나만의 프로젝트를 만들어가고 있습니다.</span>`
+      en: `I started in Web3 as a moderator at <span style="color:#e8e6e3;font-weight:500">Metakongz</span> in 2021 (Discord 50K+ at peak). Customer and community management was my main role, while I also participated in project planning. The on-the-ground experience became the foundation of my product instincts.<br/><br/>From there, I contributed to <span style="color:#e8e6e3;font-weight:500">7+ NFT/blockchain project launches as a PM and contributor</span> across Metakongz, Art In Motion, and Punkvism Holdings — covering NFT structure design (layers, rarity, metadata), service planning, community ops, and project management.<br/><br/>Now I'm <span style="color:#00ff88;font-weight:500">building products solo with AI as my development partner</span>. <a href="https://millionscan.com" target="_blank" rel="noopener" style="color:#00ff88;text-decoration:underline;text-underline-offset:3px;">MillionScan</a> is live; the AI copy trading bot was live-tested. For projects that need additional execution support, I can recruit and coordinate external designers and developers directly (most recently for VATICA's design phase).`,
+      ko: `2021년 한국 NFT 1세대 현장이었던 <span style="color:#e8e6e3;font-weight:500">Metakongz</span>(전성기 디스코드 5만+)에서 모더레이터로 Web3에 진입했습니다. 유저 응대를 주 업무로 하면서 프로젝트 기획에도 참여 — 현장에서 쌓은 경험이 지금의 프로덕트 감각의 뿌리가 되었습니다.<br/><br/>이후 메타콩즈, 아트인모션, 펑크비즘 홀딩스를 거치며 <span style="color:#e8e6e3;font-weight:500">PM 및 프로젝트 참여로 7개 이상의 NFT/블록체인 프로젝트 런칭</span>에 기여 — NFT 구조 설계(레이어·레어리티·메타데이터), 서비스 기획, 커뮤니티 운영, 프로젝트 관리 담당.<br/><br/>이제는 <span style="color:#00ff88;font-weight:500">AI를 개발 파트너로 활용해 제품을 직접 빌드</span>합니다. <a href="https://millionscan.com" target="_blank" rel="noopener" style="color:#00ff88;text-decoration:underline;text-underline-offset:3px;">MillionScan</a>은 라이브 운영 중이고, AI 카피 매매 봇은 실제 환경에서 라이브 테스트를 마쳤습니다. 추가 실행 인력이 필요한 프로젝트는 외부 디자이너·개발자를 직접 섭외·관리할 수 있습니다 (최근 사례: VATICA 디자인 단계).`
     },
     aboutCards: {
       en: [
-        { icon: "◆", title: "Battle-tested Instincts", desc: "Started on the community front lines. A planner who learned what users want through hands-on experience." },
-        { icon: "◇", title: "Planning → Execution", desc: "Service architecture, UX flows, operational policies — I organize and lead everything needed to kick off development." },
-        { icon: "●", title: "AI System Build & Ops", desc: "Planned and built an AI-powered copy trading bot. Operating in a live environment while validating performance and risk management framework. More than just planning — building systems that actually work." },
-        { icon: "▲", title: "Collaboration Docs & Ops Structure", desc: "Experience organizing and managing collaboration documents and operational structure for project execution, including NDA, IP assignment, and external contributor agreements." },
+        { icon: "◆", title: "Early Web3 Field Experience", desc: "Started on the community front lines at Metakongz (Discord 50K+). Learned what users want through hands-on experience during the first wave of Korea's NFT market." },
+        { icon: "◇", title: "NFT Structure & Planning", desc: "7+ project launches as a PM and contributor. Layer composition, rarity classification, asset QA, metadata management, generation handoff — full pipeline experience." },
+        { icon: "●", title: "On-chain Product Planning", desc: "Beyond UI: I plan how products run on-chain — wallet flows, smart-contract-based participation and settlement flows, automatic prize-pool distribution. Brought this to VATICA." },
+        { icon: "▲", title: "AI-Assisted Product Builder", desc: "MillionScan and the copy trading bot — built end-to-end as a solo product builder using AI as my development partner. Service design, data pipelines, APIs, web UI, billing — all by me." },
       ],
       ko: [
-        { icon: "◆", title: "현장에서 쌓은 감각", desc: "커뮤니티 최전선에서 시작. 유저가 무엇을 원하는지 몸으로 익힌 기획자." },
-        { icon: "◇", title: "기획 → 실행 연결", desc: "서비스 구조, UX 흐름, 운영 정책까지 — 개발 착수에 필요한 모든 것을 직접 정리하고 주도." },
-        { icon: "●", title: "AI 시스템 구축·운용", desc: "AI를 활용한 카피 매매 봇을 직접 기획·구축. 실제 운용 환경에서 성능과 리스크 관리 구조를 검증하며 운영 중. 단순 기획이 아닌, 작동하는 시스템을 만드는 실행력." },
-        { icon: "▲", title: "팀 빌딩 & 운영", desc: "해외 인력 4명을 직접 리크루팅하고 급여를 지급하며 1년째 프로젝트를 운영 중." },
+        { icon: "◆", title: "Web3 초기 현장 경험", desc: "메타콩즈(디스코드 5만+) 커뮤니티 최전선에서 시작. 한국 NFT 초기 시장의 현장에서 유저가 무엇을 원하는지 직접 익혔습니다." },
+        { icon: "◇", title: "NFT 구조 설계 & 기획", desc: "PM 및 프로젝트 참여로 7+ 프로젝트 런칭. 레이어 구성, 레어리티 분류, 에셋 QA, 메타데이터 관리, 제너레이팅 핸드오프 — 풀 파이프라인 경험." },
+        { icon: "●", title: "온체인 제품 시스템 기획", desc: "UI를 넘어 — 제품이 온체인에서 어떻게 굴러갈지 기획. 지갑 플로우, 스마트컨트랙트 기반 참여·정산 흐름, 상금 풀 자동 분배. VATICA에 이 접근 적용." },
+        { icon: "▲", title: "AI 활용 프로덕트 빌더", desc: "MillionScan과 카피 매매 봇 — AI를 개발 파트너로 활용해 단독으로 end-to-end 빌드. 서비스 설계, 데이터 파이프라인, API, 웹 UI, 결제까지 전부 직접." },
       ],
     },
 
-    // Journey
-    journeyTitle: { en: "2021 — Present", ko: "2021 — 현재" },
-    journeyItems: {
-      en: [
-        { year: "2021", title: "Joined Metakongz", subtitle: "Korea's #1 NFT Project", desc: "Started as a moderator. Entered the Web3 industry by engaging directly with users on the community front lines.", color: "#00ff88", tags: ["Moderator", "Community", "NFT"] },
-        { year: "2022", title: "Grew into Project Manager", subtitle: "Led NFT Project Planning", desc: "Took charge of planning for NFT projects built by Metakongz. Expanded from community operator to planner and PM.", color: "#00aaff", tags: ["PM", "Service Planning", "Project Mgmt"] },
-        { year: "2022–26", title: "Multiple NFT/Blockchain Projects", subtitle: "Real-world Experience", desc: "Gained diverse experience across multiple blockchain companies — community ops, PM, service planning. Currently active as a freelancer on an RWA project.", color: "#8888ff", tags: ["Blockchain", "Multi-project", "RWA", "Freelance"] },
-        { year: "2025–26", title: "Overseas Team Building & VATICA", subtitle: "From Planner to Execution Partner", desc: "Recruited overseas developers and designers to build a team. Working with 1 blockchain full-stack dev, 2 web devs, and 1 web designer to plan and develop the personal project VATICA.", color: "#ff8800", tags: ["Team Building", "VATICA", "Overseas Talent"] },
-        { year: "2026", title: "AI Copy Trading Bot", subtitle: "Live Operations & Profit Verified", desc: "Designed proprietary scoring metrics from years of futures trading experience. Built an AI-powered system automating the entire pipeline from target discovery to copy trading. Live with real capital, generating profit.", color: "#ff4488", tags: ["AI", "Futures Trading", "Scoring System", "Automated Trading"] },
-        { year: "2026", title: "Looking for the right opportunity", subtitle: "Yes, that means you", desc: "When you work with me, projects don't stop at ideas — they move into real execution. If you're looking for an execution partner, let's talk.", color: "#00ff88", tags: ["Planning → Execution", "Web3", "PM", "Available"] },
-      ],
-      ko: [
-        { year: "2021", title: "Metakongz 입사", subtitle: "대한민국 최고의 NFT 프로젝트", desc: "모더레이터로 시작. 커뮤니티 현장에서 유저와 직접 소통하며 Web3 업계에 첫 발을 내딛다.", color: "#00ff88", tags: ["Moderator", "Community", "NFT"] },
-        { year: "2022", title: "프로젝트 매니저로 성장", subtitle: "NFT 프로젝트 기획 주도", desc: "Metakongz에서 만든 다른 NFT 프로젝트들의 기획을 직접 담당. 커뮤니티 운영자에서 기획자·PM으로 역할 확장.", color: "#00aaff", tags: ["PM", "서비스 기획", "프로젝트 관리"] },
-        { year: "2022–26", title: "다수의 NFT/블록체인 프로젝트", subtitle: "실전 경험 축적", desc: "여러 블록체인 회사를 거치며 커뮤니티 운영, PM, 서비스 기획 등 다양한 역할을 수행. 현장 경험 기반의 실전 역량을 쌓아감. 현재도 프리랜서 형태로 한 RWA 프로젝트에 소속되어 활동 중.", color: "#8888ff", tags: ["블록체인", "다중 프로젝트", "RWA", "프리랜서"] },
-        { year: "2025–26", title: "해외 팀 빌딩 & VATICA", subtitle: "기획자에서 실행 파트너로", desc: "해외 개발자·디자이너를 직접 리크루팅하여 팀을 꾸림. 블록체인 풀스택 개발자 1명, 웹 개발자 2명, 웹 디자이너 1명과 함께 개인 프로젝트 VATICA를 직접 기획하고 개발 중.", color: "#ff8800", tags: ["팀 빌딩", "VATICA", "해외 인력"] },
-        { year: "2026", title: "AI 카피 매매 봇 구축", subtitle: "실제 운용 & 수익 검증", desc: "수년간의 선물 트레이딩 경력을 기반으로 개인 지표·점수 체계를 설계하고, AI를 활용하여 카피 대상 탐색부터 매매까지 자동화한 시스템을 구축. 실제 자금 투입·수익 검증 완료.", color: "#ff4488", tags: ["AI", "선물 트레이딩", "스코어링 시스템", "자동매매", "수익 검증"] },
-        { year: "2026", title: "다음 챕터를 함께할 팀을 찾고 있습니다", subtitle: "지금 이 포트폴리오를 보고 있는 당신에게", desc: "기획만 하는 사람은 많습니다. 하지만 팀을 꾸리고, 시스템을 만들고, 실제로 돌아가게 만드는 사람은 많지 않습니다. 다음 프로젝트의 실행 파트너를 찾고 계시다면 — 연락 주세요.", color: "#00ff88", tags: ["기획 → 실행", "Web3", "PM", "Available"] },
-      ],
-    },
-    journeyNow: { en: "In progress — VATICA development & AI bot operations", ko: "현재 진행형 — VATICA 개발 & AI 봇 운용 중" },
+    // Projects (MillionScan은 위 별도 섹션에서 처리되므로 여기는 제외)
+    projectsTitle1: { en: "Not just ideas —", ko: "아이디어에서 끝나지 않고," },
+    projectsTitle2: { en: "built, tested, and shipped work.", ko: "빌드·테스트·출시까지 이어진 결과물." },
 
-    // Services
-    servicesTitle1: { en: "From planning", ko: "기획에서 끝나지 않고" },
-    servicesTitle2: { en: "to execution.", ko: "실행까지 연결합니다." },
-    serviceItems: {
-      en: [
-        { num: "01", title: "Service Planning & PM", items: ["Service architecture design", "Feature specs & UX flows", "Operational policy setup", "Roadmap planning & mgmt"] },
-        { num: "02", title: "Project Execution", items: ["Dev team coordination & mgmt", "Design communication", "Timeline & resource mgmt", "QA & feedback loops"] },
-        { num: "03", title: "Community & Operations", items: ["Community strategy", "Channel management", "User feedback mgmt", "Onboarding flow design"] },
-        { num: "04", title: "AI & Automation", items: ["AI system planning", "Trading bot development", "Data-driven decisions", "Ops automation design"] },
-      ],
-      ko: [
-        { num: "01", title: "서비스 기획 & PM", items: ["서비스 구조 설계", "기능 명세 & UX 흐름", "운영 정책 정리", "로드맵 수립 & 관리"] },
-        { num: "02", title: "프로젝트 실행", items: ["개발 팀 연계 & 관리", "디자인 커뮤니케이션", "일정·리소스 관리", "QA & 피드백 루프"] },
-        { num: "03", title: "커뮤니티 & 운영", items: ["커뮤니티 전략 수립", "소통 채널 운영", "유저 피드백 관리", "온보딩 플로우 기획"] },
-        { num: "04", title: "AI & 자동화", items: ["AI 활용 시스템 기획", "트레이딩 봇 구축", "데이터 기반 의사결정", "운영 자동화 설계"] },
-      ],
-    },
-
-    // Projects
-    projectsTitle1: { en: "Not just ideas —", ko: "아이디어가 아니라," },
-    projectsTitle2: { en: "real execution.", ko: "결과물입니다." },
-    vaticaDesc: {
-      en: `A blockchain-based <span style="color:#e8e6e3;font-weight:500">Decentralized Prediction Market Protocol</span>. A P2P structure where users take Yes/No positions on real-world events (politics, sports, crypto, finance, tech). I led the entire project — service architecture, UX flows, feature planning, TOS/legal docs, operational policies — and am developing it with an overseas team. <span style="color:#00ff88;font-weight:500">IP agreements and equity distribution contracts were completed before development began</span>, with <span style="color:#00ff88;font-weight:500">equity structured under the future VATICA entity</span> to prepare for investment.`,
-      ko: `블록체인 기반의 <span style="color:#e8e6e3;font-weight:500">탈중앙화 예측 마켓(Prediction Market) 프로토콜</span>. 실제 세계의 이벤트(정치, 스포츠, 크립토, 금융, 기술)에 대해 유저가 Yes/No 포지션을 잡고 거래하는 P2P 구조. 서비스 구조 설계, UX 흐름, 기능 기획, TOS/법률 문서, 운영 정책까지 전반을 직접 기획하고, 해외 팀과 함께 개발을 진행 중. 개발 착수 전 <span style="color:#00ff88;font-weight:500">IP 계약서와 지분 분배 계약서를 모두 완료</span>한 프로젝트이며, 미래 투자 유치를 고려하여 <span style="color:#00ff88;font-weight:500">지분은 향후 설립될 VATICA 법인 소유</span>로 설계해둔 상태.`
-    },
-    vaticaFeatures: {
-      en: [
-        { name: "Markets Home", desc: "Browse prediction markets across categories including politics, sports, crypto, finance, and tech" },
-        { name: "Swipe Survey", desc: "Swipe-based quick participation UX mode for predictions" },
-        { name: "Portfolio & P/L", desc: "Dashboard for portfolio status, periodic P/L, and prediction history at a glance" },
-        { name: "Deposit / Withdrawal", desc: "USDC-based deposit/withdrawal with chain selection and QR address generation flow" },
-        { name: "Terms & Onboarding", desc: "Onboarding structure design including TOS, geo-restrictions, wallet connection, email collection, and terms agreement" },
-      ],
-      ko: [
-        { name: "Markets Home", desc: "정치, 스포츠, 크립토, 금융, 테크 등 카테고리별 예측 마켓 탐색 기능" },
-        { name: "Swipe Survey", desc: "스와이프 기반의 빠른 참여형 예측 UX 모드" },
-        { name: "Portfolio & P/L", desc: "포트폴리오 현황, 기간별 손익, 예측 히스토리를 한눈에 확인할 수 있는 대시보드" },
-        { name: "Deposit / Withdrawal", desc: "USDC 기반 입출금 기능 및 체인 선택/QR 주소 생성 플로우" },
-        { name: "Terms & Onboarding", desc: "TOS, 지역 제한, 지갑 연결, 이메일 수집, 약관 동의 절차를 포함한 온보딩 구조 설계" },
-      ],
-    },
-    vaticaIpNote: { en: "* The designs above were created for the VATICA project. Related IP and deliverables are managed in accordance with project agreements.", ko: "* 상기 디자인은 VATICA 프로젝트를 위해 제작된 작업물이며, 관련 IP 및 결과물은 프로젝트 기준에 따라 관리됩니다." },
-    vaticaRoles: {
-      en: ["Service Architecture", "Feature Specs & Planning Docs", "UX Flow Design", "Smart Contract Structure Planning", "On-chain Settlement Logic", "TOS & Ops Documentation", "Operational Policy", "Design Direction", "Overseas Team Coordination", "IP & Collaboration Agreement Structure", "Initial Equity Structure Planning"],
-      ko: ["서비스 구조 설계", "기능 명세 및 기획 문서 작성", "UX 흐름 기획", "스마트컨트랙트 구조 기획", "온체인 정산 로직 기획", "TOS 및 운영 문서 정리", "운영 정책 수립", "디자인 디렉션", "해외 협업 인력 관리", "IP/협업 계약 구조 정리", "초기 지분 구조 기획"],
-    },
-    vaticaAiNote: {
-      en: "AI tools are actively used to support research, documentation, planning, and workflow efficiency.",
-      ko: "리서치, 문서화, 기획 정리, 워크플로우 효율화를 위해 AI 도구를 적극 활용합니다.",
-    },
+    // Bot
+    botStatusLabel: { en: "LIVE-TESTED · PAUSED", ko: "라이브 테스트 완료 · 현재 운용 보류" },
+    botSubtitle: { en: "AI Copy Trading Bot — origin of MillionScan", ko: "AI 카피 매매 봇 — MillionScan의 출발점" },
     botDesc: {
-      en: `Based on <span style="color:#e8e6e3;font-weight:500">years of futures trading experience</span>, I designed <span style="color:#ff8800;font-weight:500">custom indicators and a scoring framework</span> to evaluate copy targets. I built a full pipeline that <span style="color:#e8e6e3;font-weight:500">tracks active wallets on-chain</span> — from target discovery → observation → data collection → copy trading.<br/><br/>Automation is powered by AI, with <span style="color:#e8e6e3;font-weight:500">Telegram integration for control and real-time monitoring</span>. The system also incorporates <span style="color:#e8e6e3;font-weight:500">security and risk response measures designed for live operation</span>, and is currently being validated in a real trading environment.<br/><br/><span style="color:#888;font-size:13px">AI is used for target discovery, data processing, scoring support, report generation, and operational monitoring.</span>`,
-      ko: `수년간의 선물 트레이딩 경험을 바탕으로, 카피 대상을 평가하는 <span style="color:#ff8800;font-weight:500">개인 지표와 점수 체계</span>를 직접 설계했습니다. <span style="color:#e8e6e3;font-weight:500">온체인에서 활동하는 지갑을 추적</span>하고, 대상 탐색 → 관찰 → 데이터 수집 → 카피 매매까지 이어지는 전체 파이프라인을 구축했습니다.<br/><br/>AI를 활용해 자동화를 구성했으며, 텔레그램 연동을 통해 <span style="color:#e8e6e3;font-weight:500">제어 및 실시간 모니터링</span>이 가능하도록 설계했습니다. 또한 <span style="color:#e8e6e3;font-weight:500">실운용 환경을 고려한 보안 및 리스크 대응 구조</span>를 적용했고, 현재 실제 운영 환경에서 시스템의 성능과 리스크 관리 체계를 검증하고 있습니다.<br/><br/><span style="color:#888;font-size:13px">AI는 대상 탐색, 데이터 정리, 점수화 보조, 리포트 생성 및 운영 모니터링 효율화에 활용되었습니다.</span>`
+      en: `Built on <span style="color:#e8e6e3;font-weight:500">years of personal futures trading experience</span>. Designed custom indicators and a scoring framework to evaluate copy targets, then built a full pipeline: on-chain wallet tracking → target discovery → observation → data collection → copy execution.<br/><br/>Telegram-integrated control panel, real-time monitoring, bot/wash-trader filtering, security/risk-response logic. <span style="color:#e8e6e3;font-weight:500">Live-tested in a real trading environment.</span> Currently paused due to capital requirements.<br/><br/>The bot/wash filtering and scoring logic built here became the foundation for <a href="https://millionscan.com" target="_blank" rel="noopener" style="color:#ff8800;text-decoration:underline;text-underline-offset:3px;">MillionScan</a>'s data infrastructure.`,
+      ko: `<span style="color:#e8e6e3;font-weight:500">개인 선물 트레이딩 경험</span>을 바탕으로 빌드. 카피 대상을 평가하는 개인 지표·스코어링 체계를 설계하고, 온체인 지갑 추적 → 대상 탐색 → 관찰 → 데이터 수집 → 카피 매매까지 이어지는 전체 파이프라인을 구축.<br/><br/>텔레그램 연동 제어판, 실시간 모니터링, 봇·자전거래 필터링, 보안·리스크 대응 구조. <span style="color:#e8e6e3;font-weight:500">실제 운용 환경에서 라이브 테스트 진행.</span> 현재는 자본 요건으로 인해 운용을 보류한 상태입니다.<br/><br/>여기서 만든 봇·자전거래 필터링과 스코어링 로직이 <a href="https://millionscan.com" target="_blank" rel="noopener" style="color:#ff8800;text-decoration:underline;text-underline-offset:3px;">MillionScan</a> 데이터 인프라의 기초가 되었습니다.`
     },
     botStats: {
       en: [
-        { label: "STATUS", value: "LIVE", color: "#00ff88" },
-        { label: "BASED ON", value: "Futures Trading Experience", color: "#ff8800" },
-        { label: "CORE STRUCTURE", value: "On-chain · Scoring", color: "#ff4488" },
-        { label: "OPS METHOD", value: "Telegram · Real-time Monitoring", color: "#00aaff" },
+        { label: "STATUS", value: "Live-tested · Paused", color: "#00ff88" },
+        { label: "BUILT BY", value: "Solo · AI-assisted", color: "#ff8800" },
+        { label: "EVOLVED INTO", value: "MillionScan", color: "#ff4488" },
+        { label: "ASSETS", value: "Code · Algorithm · Logs", color: "#00aaff" },
       ],
       ko: [
-        { label: "상태", value: "LIVE", color: "#00ff88" },
-        { label: "기반", value: "선물 트레이딩 실전 경험", color: "#ff8800" },
-        { label: "핵심 구조", value: "온체인 추적 · 스코어링", color: "#ff4488" },
-        { label: "운영 방식", value: "텔레그램 연동 · 실시간 모니터링", color: "#00aaff" },
+        { label: "상태", value: "라이브 테스트 완료 · 현재 운용 보류", color: "#00ff88" },
+        { label: "빌드 방식", value: "단독 빌드 (AI 활용)", color: "#ff8800" },
+        { label: "진화 결과", value: "MillionScan", color: "#ff4488" },
+        { label: "보유 자산", value: "코드 · 알고리즘 · 운용기록", color: "#00aaff" },
       ],
     },
     botTags: {
-      en: ["Futures Trading", "On-chain Tracking", "Scoring System", "AI-powered Automation", "Telegram", "Operational Security", "Risk Mgmt"],
-      ko: ["선물 트레이딩", "온체인 지갑 추적", "스코어링 시스템", "AI 기반 자동화", "텔레그램 연동", "운영 보안 설계", "리스크 관리"],
-    },
-    web3Desc: {
-      en: `Starting from <span style="color:#e8e6e3;font-weight:500">Metakongz</span>, gained experience across multiple NFT and blockchain projects in community ops, PM, and service planning. The on-the-ground experience built the foundation for current planning and execution capabilities.`,
-      ko: `<span style="color:#e8e6e3;font-weight:500">Metakongz</span>를 시작으로 다수의 NFT·블록체인 프로젝트에서 커뮤니티 운영, PM, 서비스 기획을 담당. 현장에서 유저와 부딪히며 쌓은 경험이 지금의 기획력과 실행력의 기반이 됨.`
+      en: ["AI-Assisted Build", "Futures Trading Experience", "On-chain Tracking", "Scoring System", "Bot/Wash Filtering", "Telegram", "Live-tested", "MillionScan Origin"],
+      ko: ["AI 활용 빌드", "선물 트레이딩 경험", "온체인 지갑 추적", "스코어링 시스템", "봇·자전거래 필터링", "텔레그램 연동", "라이브 테스트", "MillionScan 출발점"],
     },
 
-    // Team
-    teamTitle: { en: "I work with a real team.", ko: "혼자가 아닙니다." },
-    teamDesc: {
-      en: "I have a collaboration structure that connects planning, development, design, and execution.<br/>This is not just a network, but a real working team actively operated through ongoing project collaboration.",
-      ko: "기획 → 개발 → 디자인 → 실행까지 연결 가능한 협업 구조를 갖추고 있습니다.<br/>단순 네트워크가 아니라, 실제 비용 집행 기반으로 운영 중인 협업 팀입니다."
+    // VATICA
+    vaticaStatusLabel: { en: "DESIGN COMPLETE · BUILD PAUSED", ko: "디자인 완료 · 빌드 보류" },
+    vaticaSubtitle: { en: "Prediction Market Concept", ko: "예측 마켓 컨셉" },
+    vaticaDesc: {
+      en: `A blockchain-based <span style="color:#e8e6e3;font-weight:500">prediction market</span> I planned after Polymarket's emergence — adapted with a <span style="color:#e8e6e3;font-weight:500">Tinder-style swipe UX</span> to lower the entry barrier for casual users. Yes/No positions on real-world events.<br/><br/>I led <span style="color:#ff8800;font-weight:500">on-chain product system planning</span>: wallet connection, smart-contract-based participation and settlement flows, automatic prize-pool distribution. Service architecture, UX flows, feature specs, operational policy. <span style="color:#e8e6e3;font-weight:500">Recruited and managed an overseas designer directly</span> to bring the design phase to completion.<br/><br/><span style="color:#888;font-size:13px">Status: Design complete, development not started.</span>`,
+      ko: `Polymarket의 등장을 보고 기획한 <span style="color:#e8e6e3;font-weight:500">블록체인 기반 예측 마켓</span>. 캐주얼 유저의 진입 장벽을 낮추기 위해 <span style="color:#e8e6e3;font-weight:500">Tinder 스타일 스와이프 UX</span>와 결합. 현실 세계 이벤트에 Yes/No 포지션을 잡는 구조입니다.<br/><br/><span style="color:#ff8800;font-weight:500">온체인 제품 시스템 기획</span> 담당: 지갑 연결, 스마트컨트랙트 기반 참여 및 정산 흐름, 상금 풀 자동 분배. 서비스 구조, UX 흐름, 기능 명세, 운영 정책까지 기획했습니다. <span style="color:#e8e6e3;font-weight:500">해외 디자이너를 직접 섭외·운영</span>해 디자인 단계를 완성.<br/><br/><span style="color:#888;font-size:13px">현재 상태: 디자인 완료, 개발 미착수.</span>`
     },
-    teamMembers: {
+    vaticaIpNote: { en: "* Designs by the overseas designer I recruited and managed.", ko: "* 위 디자인은 직접 섭외·운영한 해외 디자이너의 작업물입니다." },
+    vaticaRoles: {
+      en: ["On-chain Product System Planning", "Service Architecture", "UX Flow (Tinder-style)", "Feature Specs", "Wallet Connection Flow", "Settlement Flow Planning", "Operational Policy", "Design Direction", "Overseas Designer Recruitment & Management"],
+      ko: ["온체인 제품 시스템 기획", "서비스 구조 설계", "UX 흐름 (Tinder 스타일)", "기능 명세", "지갑 연결 플로우", "정산 흐름 기획", "운영 정책", "디자인 디렉션", "해외 디자이너 섭외·운영"],
+    },
+
+    // Web3 PM Career (Career section)
+    careerTitle: { en: "Web3 PM Career", ko: "Web3 PM 경력" },
+    careerSubtitle: { en: "PM / Contributor · 7+ NFT/blockchain project launches", ko: "PM 및 프로젝트 참여 · 7개+ NFT/블록체인 프로젝트 런칭 기여" },
+    careerIntro: {
+      en: `Across <span style="color:#e8e6e3;font-weight:500">Metakongz, Art In Motion, and Punkvism Holdings</span> — community ops, project planning, NFT structure design, project management.`,
+      ko: `<span style="color:#e8e6e3;font-weight:500">메타콩즈, 아트인모션, 펑크비즘 홀딩스</span>를 거치며 — 커뮤니티 운영, 프로젝트 기획, NFT 구조 설계, 프로젝트 관리 담당.`
+    },
+    careerCompanies: {
       en: [
-        { role: "Blockchain Full-stack Dev", count: "×1", color: "#00ff88" },
-        { role: "Web Developers", count: "×2", color: "#00aaff" },
-        { role: "Web Designer", count: "×1", color: "#ff88ff" },
+        {
+          name: "METAKONGZ",
+          period: "2021.11 — 2022.05",
+          role: "Moderator + Project Planning",
+          desc: "Customer and community management was my main role, while I also participated in project planning. Discord 50K+ at peak.",
+          projects: [
+            { name: "Metakongz NFT", note: "One of Korea's leading 1st-gen NFT projects" },
+            { name: "Puuvilla Society", note: "Co-launched with Metakongz" },
+          ],
+          color: "#00ff88",
+        },
+        {
+          name: "ART IN MOTION",
+          period: "2024.02 — 2024.11",
+          role: "Project Planning & Ops Lead (Contributor)",
+          desc: "NFT parts/trait structure design — layer composition, rarity classification, asset QA, metadata management, generation handoff prep, final QA.",
+          projects: [
+            { name: "Impatient Tiger Social Club", note: "NFT collection" },
+            { name: "Tokengaming.xyz", note: "Licensed crypto casino (no longer in operation)" },
+            { name: "Tokenfighter", note: "NFT IP fighting game" },
+          ],
+          color: "#8888ff",
+        },
+        {
+          name: "PUNKVISM HOLDINGS",
+          period: "2024.11 — 2026.04",
+          role: "Project Planning & Ops Lead (Contributor)",
+          desc: "A successor studio founded by Metakongz leadership. NFT structure design across multiple drops. Combined community of 80K+ across Discord, KakaoTalk, and Telegram.",
+          projects: [
+            { name: "Punkvism Genesis", note: "" },
+            { name: "Punkykongz", note: "" },
+            { name: "Alya", note: "" },
+            { name: "Punk Ha_G", note: "" },
+          ],
+          color: "#00aaff",
+        },
+      ],
+      ko: [
+        {
+          name: "METAKONGZ",
+          period: "2021.11 — 2022.05",
+          role: "모더레이터 + 프로젝트 기획",
+          desc: "유저 응대가 주 업무였고, 프로젝트 기획에도 참여했습니다. 전성기 디스코드 5만+.",
+          projects: [
+            { name: "Metakongz NFT", note: "한국 대표 1세대 NFT 프로젝트 중 하나" },
+            { name: "푸빌라(Puuvilla Society)", note: "Metakongz에서 협력 발행" },
+          ],
+          color: "#00ff88",
+        },
+        {
+          name: "ART IN MOTION",
+          period: "2024.02 — 2024.11",
+          role: "프로젝트 기획 및 운영 참여",
+          desc: "NFT 파츠/트레이트 구조 설계 — 레이어 구성, 레어리티 분류, 에셋 QA, 메타데이터 관리, 제너레이팅 핸드오프, 최종 QA.",
+          projects: [
+            { name: "Impatient Tiger Social Club", note: "NFT 컬렉션" },
+            { name: "Tokengaming.xyz", note: "라이선스 보유 크립토 카지노 (현재 운영 X)" },
+            { name: "토큰파이터", note: "NFT IP 파이팅 게임" },
+          ],
+          color: "#8888ff",
+        },
+        {
+          name: "PUNKVISM HOLDINGS",
+          period: "2024.11 — 2026.04",
+          role: "프로젝트 기획 및 운영 참여",
+          desc: "메타콩즈 경영진의 후속 스튜디오. 다수 드랍의 NFT 구조 설계. 디스코드/카카오/텔레그램 통합 8만+ 커뮤니티 운영.",
+          projects: [
+            { name: "Punkvism Genesis", note: "" },
+            { name: "Punkykongz", note: "" },
+            { name: "Alya", note: "" },
+            { name: "Punk Ha_G", note: "" },
+          ],
+          color: "#00aaff",
+        },
+      ],
+    },
+
+    // Capabilities (was Services)
+    capabilitiesTitle1: { en: "What I can do —", ko: "할 수 있는 일 —" },
+    capabilitiesTitle2: { en: "from planning to shipping.", ko: "기획부터 출시까지." },
+    capabilityItems: {
+      en: [
+        { num: "01", title: "Web3 Product Planning", items: ["Service architecture", "NFT structure design (layers, rarity, metadata)", "Operational policy planning", "Roadmap planning & mgmt"] },
+        { num: "02", title: "On-chain Product Planning", items: ["Wallet flow planning", "Smart-contract participation and settlement flows", "Prize-pool distribution systems", "Compliance-aware product flow"] },
+        { num: "03", title: "AI-Assisted Product Build", items: ["End-to-end product build with AI", "Data pipelines & scoring engines", "REST/WebSocket APIs · SDKs", "Crypto billing integration"] },
+        { num: "04", title: "Project Execution Management", items: ["External designer/developer coordination", "Timeline & resource control", "Communication & QA loops", "Operational documentation"] },
+      ],
+      ko: [
+        { num: "01", title: "Web3 프로덕트 기획", items: ["서비스 구조 설계", "NFT 구조 설계 (레이어·레어리티·메타데이터)", "운영 정책 기획", "로드맵 수립 & 관리"] },
+        { num: "02", title: "온체인 제품 기획", items: ["지갑 플로우 기획", "스마트컨트랙트 기반 참여·정산 흐름", "상금 풀 분배 시스템", "운영 정책 기반 제품 흐름"] },
+        { num: "03", title: "AI 활용 프로덕트 빌드", items: ["AI 협업 end-to-end 빌드", "데이터 파이프라인 & 스코어링 엔진", "REST/WebSocket API · SDK", "크립토 결제 통합"] },
+        { num: "04", title: "프로젝트 실행 관리", items: ["외부 디자이너·개발자 섭외 및 조율", "일정·리소스 관리", "커뮤니케이션 & QA 루프", "운영 문서화"] },
+      ],
+    },
+
+    // Workflow (was Team)
+    workflowTitle: { en: "AI first. External support when needed.", ko: "AI를 우선으로. 필요 시 외부 실행 지원." },
+    workflowDesc: {
+      en: "I primarily build with AI as my development partner — that's how MillionScan and the copy trading bot were built and launched.<br/>For projects requiring additional execution support, I can coordinate external designers and developers directly. Most recent example: VATICA's design phase.",
+      ko: "기본적으로 AI를 주력 개발 파트너로 활용해 직접 빌드합니다 — MillionScan과 카피 매매 봇은 그렇게 빌드되고 출시/테스트되었습니다.<br/>추가 실행 인력이 필요한 프로젝트는 외부 디자이너·개발자를 직접 섭외·관리할 수 있습니다. 가장 최근 사례: VATICA 디자인 단계."
+    },
+    workflowCapabilities: {
+      en: [
+        { role: "AI as Build Partner", count: "PRIMARY", color: "#00ff88" },
+        { role: "Blockchain Full-stack", count: "Coordinable", color: "#00aaff" },
+        { role: "Web Dev / Design", count: "Coordinable", color: "#ff88ff" },
         { role: "Planning · PM · Ops", count: "ME", color: "#ff8800" },
       ],
       ko: [
-        { role: "블록체인 풀스택 개발자", count: "1명", color: "#00ff88" },
-        { role: "웹 개발자", count: "2명", color: "#00aaff" },
-        { role: "웹 디자이너", count: "1명", color: "#ff88ff" },
+        { role: "AI 빌드 파트너", count: "주력", color: "#00ff88" },
+        { role: "블록체인 풀스택", count: "조율 가능", color: "#00aaff" },
+        { role: "웹 개발 / 디자인", count: "조율 가능", color: "#ff88ff" },
         { role: "기획 · PM · 운영", count: "ME", color: "#ff8800" },
       ],
     },
-    teamQuote1: {
-      en: "Working with me does not stop at planning —<br/>it leads into real execution.",
-      ko: "이 사람과 함께하면 기획에서 끝나지 않고,<br/>실제 실행 단계까지 이어진다."
+    workflowQuote1: {
+      en: "Working with me does not stop at planning —<br/>it leads to shipped products.",
+      ko: "저와 함께하면 기획에서 끝나지 않고,<br/>실제 출시까지 이어집니다."
     },
-    teamQuote2: { en: "— That's how I deliver value.", ko: "— 이것이 제가 드리는 가치입니다." },
+    workflowQuote2: { en: "That's how I deliver value.", ko: "이것이 제가 드리는 가치입니다." },
 
     // Contact
     contactTitle1: { en: "Let's move your", ko: "프로젝트를 함께" },
     contactTitle2: { en: "project forward.", ko: "실행해봅시다." },
     contactDesc: {
-      en: "If you need support with blockchain/Web3 project planning, PM, or service structure design,<br/>feel free to reach out.",
-      ko: "블록체인/Web3 프로젝트 기획, PM, 서비스 구조 설계가 필요하시다면<br/>편하게 연락 주세요."
+      en: "Looking for a Web3 PM who can plan, build, and ship? Reach out.",
+      ko: "기획·빌드·출시까지 가능한 Web3 PM을 찾고 계신가요? 연락 주세요."
     },
     contactBtn1: { en: "SEND EMAIL →", ko: "이메일 보내기 →" },
 
     // Footer
-    footerTag: { en: "Built with execution, not just ideas.", ko: "Built with execution, not just ideas." },
+    footerTag: { en: "Web3 PM · AI-assisted product builder", ko: "Web3 PM · AI와 함께 빌드" },
+
+    // Gallery hint
+    galleryHint: { en: "Swipe to view →", ko: "스와이프해서 보기 →" },
   };
 
   const L = (key) => key[lang] || key.en;
@@ -262,10 +349,10 @@ export default function Portfolio() {
       <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       <style>{`
         * { margin:0; padding:0; box-sizing:border-box; }
-        ::selection { background: #00ff8840; color: #fff; }
+        ::selection { background: #00ff8830; color: #fff; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
         html { scroll-behavior: smooth; }
         body { background: #0a0a0a; }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
@@ -279,15 +366,19 @@ export default function Portfolio() {
         }
         .grain::before {
           content:''; position:fixed; top:-50%; left:-50%; width:200%; height:200%;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
           animation: grain 8s steps(10) infinite;
-          pointer-events:none; z-index:9999; opacity:0.5;
+          pointer-events:none; z-index:9999; opacity:0.35;
         }
-        .tag { display:inline-block; padding:6px 14px; border:1px solid #00ff8850; color:#00ff88; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; border-radius:2px; font-family:'Outfit',sans-serif; }
-        .glow-line { height:1px; background:linear-gradient(90deg,transparent,#00ff8840,transparent); }
+        /* Tags use soft green / muted */
+        .tag { display:inline-block; padding:6px 14px; border:1px solid #00ff8830; color:#7fcca3; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; border-radius:2px; font-family:'Outfit',sans-serif; background: rgba(0, 255, 136, 0.04); }
+        /* Live tag uses full neon green */
+        .tag-live { display:inline-block; padding:6px 14px; border:1px solid #00ff88; color:#00ff88; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; border-radius:2px; font-family:'Outfit',sans-serif; background: rgba(0, 255, 136, 0.08); }
+        /* Glow line - softer & only used between major transitions */
+        .glow-line { height:1px; background:linear-gradient(90deg,transparent,#00ff8825,transparent); }
         a { color:#00ff88; text-decoration:none; }
         .card { background:#111; border:1px solid #1a1a1a; border-radius:8px; padding:32px; transition: all .3s ease; }
-        .card:hover { border-color:#00ff8830; background:#131313; transform:translateY(-2px); }
+        .card:hover { border-color:#2a2a2a; background:#131313; transform:translateY(-2px); }
         .btn-primary { display:inline-flex; align-items:center; gap:8px; padding:14px 32px; background:#00ff88; color:#0a0a0a; font-weight:700; font-size:14px; letter-spacing:1px; text-transform:uppercase; border:none; cursor:pointer; border-radius:4px; font-family:'Outfit',sans-serif; transition:all .2s; }
         .btn-primary:hover { background:#00ffaa; box-shadow:0 0 30px #00ff8830; }
         .btn-outline { display:inline-flex; align-items:center; gap:8px; padding:14px 32px; background:transparent; color:#e8e6e3; font-weight:600; font-size:14px; letter-spacing:1px; text-transform:uppercase; border:1px solid #333; cursor:pointer; border-radius:4px; font-family:'Outfit',sans-serif; transition:all .2s; }
@@ -297,6 +388,12 @@ export default function Portfolio() {
         /* Desktop layout */
         section, footer { max-width: 1200px; margin-left: auto; margin-right: auto; }
         @media(min-width:769px) {
+          .ms-gallery {
+            display: grid !important; grid-template-columns: repeat(3, 1fr) !important;
+            overflow-x: visible !important;
+          }
+          .ms-gallery > div { min-width: unset !important; width: auto !important; }
+          .ms-gallery img { height: 320px !important; }
           .vatica-gallery {
             display: grid !important; grid-template-columns: repeat(4, 1fr) !important;
             overflow-x: visible !important;
@@ -309,63 +406,59 @@ export default function Portfolio() {
           }
           .bot-gallery > div { min-width: unset !important; width: auto !important; }
           .bot-gallery img { height: 550px !important; }
+          .gallery-hint { display: none !important; }
         }
 
         /* Mobile Responsive */
         @media(max-width:768px) {
+          body { line-height: 1.65; }
           .hero-section { padding-top: 120px !important; }
           .hero-stats { gap: 24px !important; }
           .hero-stats > div > div:first-child { font-size: 28px !important; }
           .about-grid { grid-template-columns: 1fr !important; }
-          .services-grid { grid-template-columns: 1fr !important; }
-          .services-grid > div > div { border-right: none !important; }
-          .vatica-features-grid { grid-template-columns: 1fr 1fr !important; }
+          .capabilities-grid { grid-template-columns: 1fr !important; }
+          .capabilities-grid > div > div { border-right: none !important; }
+          .ms-stats-grid { grid-template-columns: 1fr 1fr !important; }
           .bot-stats-grid { grid-template-columns: 1fr 1fr !important; }
-          .team-grid { grid-template-columns: 1fr 1fr !important; }
-          .team-quote { padding: 24px 20px !important; }
-          .team-quote p:first-child { font-size: 15px !important; }
+          .workflow-grid { grid-template-columns: 1fr 1fr !important; }
+          .workflow-quote { padding: 24px 20px !important; }
+          .workflow-quote p:first-child { font-size: 15px !important; }
           .vatica-header { flex-direction: column !important; }
-          .vatica-roles-grid { grid-template-columns: 1fr 1fr !important; }
           .footer-wrap { flex-direction: column !important; text-align: center !important; gap: 12px !important; }
-          /* Image galleries: horizontal scroll */
-          .vatica-gallery {
+          .companies-grid { grid-template-columns: 1fr !important; }
+          /* Image galleries: horizontal scroll w/ peek + snap */
+          .ms-gallery, .vatica-gallery, .bot-gallery {
             display: flex !important; overflow-x: auto !important;
             grid-template-columns: unset !important; gap: 12px !important;
             scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-            padding-bottom: 8px;
+            padding-bottom: 8px; padding-right: 40px;
           }
-          .vatica-gallery > div {
-            min-width: 280px !important; flex-shrink: 0 !important;
+          .ms-gallery > div, .vatica-gallery > div, .bot-gallery > div {
+            flex-shrink: 0 !important;
             scroll-snap-align: start;
           }
+          .ms-gallery > div { min-width: 280px !important; }
+          .vatica-gallery > div { min-width: 240px !important; }
+          .bot-gallery > div { min-width: 250px !important; }
+          .ms-gallery img { height: 200px !important; object-fit: cover; object-position: top; }
           .vatica-gallery img { min-height: 200px; object-fit: cover; }
-          .bot-gallery {
-            display: flex !important; overflow-x: auto !important;
-            grid-template-columns: unset !important; gap: 12px !important;
-            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-            padding-bottom: 8px;
-          }
-          .bot-gallery > div {
-            min-width: 250px !important; flex-shrink: 0 !important;
-            scroll-snap-align: start;
-          }
           .bot-gallery img { min-height: 180px; object-fit: cover; }
-          /* Scrollbar styling for galleries */
-          .vatica-gallery::-webkit-scrollbar, .bot-gallery::-webkit-scrollbar { height: 4px; }
-          .vatica-gallery::-webkit-scrollbar-track, .bot-gallery::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 2px; }
-          .vatica-gallery::-webkit-scrollbar-thumb, .bot-gallery::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+          /* Scrollbar styling */
+          .ms-gallery::-webkit-scrollbar, .vatica-gallery::-webkit-scrollbar, .bot-gallery::-webkit-scrollbar { height: 4px; }
+          .ms-gallery::-webkit-scrollbar-track, .vatica-gallery::-webkit-scrollbar-track, .bot-gallery::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 2px; }
+          .ms-gallery::-webkit-scrollbar-thumb, .vatica-gallery::-webkit-scrollbar-thumb, .bot-gallery::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
         }
         @media(max-width:480px) {
           .hero-section { padding-top: 130px !important; }
           .hero-stats { gap: 20px !important; }
           .hero-stats > div > div:first-child { font-size: 24px !important; }
-          .vatica-features-grid { grid-template-columns: 1fr !important; }
+          .ms-stats-grid { grid-template-columns: 1fr !important; }
           .bot-stats-grid { grid-template-columns: 1fr !important; }
-          .team-grid { grid-template-columns: 1fr !important; }
-          .vatica-roles-grid { grid-template-columns: 1fr !important; }
+          .workflow-grid { grid-template-columns: 1fr !important; }
           .contact-buttons { flex-direction: column !important; align-items: center !important; }
           .contact-buttons a, .contact-buttons button { width: 100% !important; justify-content: center !important; }
-          .vatica-gallery > div { min-width: 260px !important; }
+          .ms-gallery > div { min-width: 260px !important; }
+          .vatica-gallery > div { min-width: 220px !important; }
           .bot-gallery > div { min-width: 230px !important; }
         }
 
@@ -414,12 +507,12 @@ export default function Portfolio() {
         padding: "0 clamp(20px,5vw,60px)",
       }}>
         <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 20, letterSpacing: -0.5, cursor: "pointer" }} onClick={() => scrollTo("HOME")}>
-          <span style={{ color: "#00ff88" }}>●</span> Mr. BEOM
+          <span style={{ color: "#00ff88" }}>●</span> {lang === "en" ? "Heo Yun-Beom" : "허윤범"}
         </div>
-        <div className="nav-links" style={{ display: "flex", gap: 32, alignItems: "center" }}>
+        <div className="nav-links" style={{ display: "flex", gap: 28, alignItems: "center" }}>
           {SECTIONS.map(s => (
             <div key={s} onClick={() => scrollTo(s)} style={{
-              fontSize: 12, letterSpacing: 1.5, cursor: "pointer", fontWeight: 500,
+              fontSize: 11, letterSpacing: 1.5, cursor: "pointer", fontWeight: 500,
               color: activeSection === s ? "#00ff88" : "#666",
               transition: "color .2s",
             }}
@@ -465,17 +558,12 @@ export default function Portfolio() {
       }}>
         <div style={{
           position: "absolute", top: "15%", right: "-5%", width: 500, height: 500,
-          background: "radial-gradient(circle, #00ff8808 0%, transparent 70%)",
+          background: "radial-gradient(circle, #00ff8806 0%, transparent 70%)",
           borderRadius: "50%", filter: "blur(60px)", pointerEvents: "none",
-        }} />
-        <div style={{
-          position: "absolute", bottom: "10%", left: "-10%", width: 400, height: 400,
-          background: "radial-gradient(circle, #00ff8805 0%, transparent 70%)",
-          borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none",
         }} />
 
         <FadeIn delay={0.1}>
-          <div className="tag" style={{ marginBottom: 28 }}>BLOCKCHAIN · WEB3 · PM · EXECUTION</div>
+          <div className="tag" style={{ marginBottom: 28 }}>{L(t.heroTag)}</div>
         </FadeIn>
         <FadeIn delay={0.2}>
           <h1 style={{
@@ -487,25 +575,25 @@ export default function Portfolio() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.35}>
-          <p style={{ fontSize: 18, color: "#999", maxWidth: 560, lineHeight: 1.7, marginTop: 28, fontWeight: 400 }}>
-            {L(t.heroSub1)}<br />
+          <p style={{ fontSize: 18, color: "#aaa", maxWidth: 680, lineHeight: 1.7, marginTop: 28, fontWeight: 400 }}>
+            <span style={{ color: "#7fcca3", fontWeight: 600 }}>{L(t.heroSub1)}</span><br />
             {L(t.heroSub2)}
           </p>
         </FadeIn>
         <FadeIn delay={0.5}>
           <div style={{ display: "flex", gap: 16, marginTop: 40, flexWrap: "wrap" }}>
-            <button className="btn-primary" onClick={() => scrollTo("PROJECTS")}>{L(t.heroBtn1)}</button>
-            <button className="btn-outline" onClick={() => scrollTo("CONTACT")}>CONTACT</button>
+            <a href="https://millionscan.com" target="_blank" rel="noopener" className="btn-primary" style={{ textDecoration: "none" }}>{L(t.heroBtn1)}</a>
+            <button className="btn-outline" onClick={() => scrollTo("PROJECTS")}>{L(t.heroBtn2)}</button>
           </div>
         </FadeIn>
 
         <FadeIn delay={0.7}>
           <div className="hero-stats" style={{ display: "flex", gap: 48, marginTop: 80, flexWrap: "wrap" }}>
             {[
-              { num: "5+", label: "Years in Web3" },
-              { num: "4", label: "Team Members" },
-              { num: "1yr", label: "Team Operating" },
-              { num: "∞", label: "Execution Power" },
+              { num: "5+", label: lang === "en" ? "Years in Web3" : "Web3 경험 (년)" },
+              { num: "7+", label: lang === "en" ? "NFT/Blockchain Projects" : "NFT/블록체인 프로젝트" },
+              { num: "1", label: lang === "en" ? "Live Product" : "라이브 프로덕트" },
+              { num: "AI+", label: lang === "en" ? "AI-assisted Build Mode" : "AI 활용 빌드 방식" },
             ].map((s, i) => (
               <div key={i}>
                 <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 36, fontWeight: 800, color: "#00ff88" }}>{s.num}</div>
@@ -514,37 +602,126 @@ export default function Portfolio() {
             ))}
           </div>
         </FadeIn>
+
+        {/* Compact profile strip — replaces standalone Profile section */}
+        <FadeIn delay={0.9}>
+          <div style={{
+            marginTop: 60, padding: "20px 24px", border: "1px solid #1a1a1a", borderRadius: 8,
+            background: "#0d0d0d", display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+              <img src="/pfp.jpg" alt={lang === "en" ? "Heo Yun-Beom (NFT avatar)" : "허윤범 (NFT 아바타)"} onClick={() => setProfileLightbox("/pfp.jpg")} style={{ width: 56, height: 56, borderRadius: "50%", border: "2px solid #00ff8830", objectFit: "cover", position: "relative", zIndex: 1, cursor: "pointer", transition: "transform 0.2s" }} onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"} onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"} />
+              <img src="/profile-real.jpg" alt={lang === "en" ? "Heo Yun-Beom" : "허윤범"} onClick={() => setProfileLightbox("/profile-real.jpg")} style={{ width: 56, height: 56, borderRadius: "50%", border: "2px solid #0d0d0d", objectFit: "cover", marginLeft: -16, position: "relative", zIndex: 2, boxShadow: "0 0 0 1px #1a1a1a", cursor: "pointer", transition: "transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.05)"; e.currentTarget.style.zIndex = "3"; }} onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.zIndex = "2"; }} />
+            </div>
+            <div style={{ flex: 1, minWidth: 200 }}>
+              <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 16, fontWeight: 700, marginBottom: 4 }}>{lang === "en" ? "Heo Yun-Beom" : "허윤범"}</div>
+              <div style={{ fontSize: 13, color: "#888", lineHeight: 1.6 }}>{L(t.profileIntro)}</div>
+            </div>
+            <span style={{ padding: "6px 14px", border: "1px solid #00ff8830", borderRadius: 16, fontSize: 12, color: "#7fcca3", fontWeight: 500, flexShrink: 0 }}>Web3 PM · Building with AI</span>
+          </div>
+        </FadeIn>
       </section>
 
       <div className="glow-line" />
 
-      {/* PROFILE */}
-      <div style={{ padding: "clamp(60px,8vw,100px) clamp(20px,8vw,120px)", maxWidth: 1200, margin: "0 auto" }}>
+      {/* MILLIONSCAN — FEATURED PRODUCT (NEW POSITION) */}
+      <section id="millionscan" style={{ padding: "clamp(60px,10vw,140px) clamp(20px,8vw,120px)" }}>
         <FadeIn>
-          <img src="/pfp.jpg" alt="BEOM" style={{ width: 140, height: 140, borderRadius: "50%", border: "3px solid #00ff8840", margin: "0 auto 24px", display: "block", objectFit: "cover" }} />
-          <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 32, fontWeight: 800, textAlign: "center", marginBottom: 12 }}>BEOM</div>
-          <p style={{ fontSize: 17, color: "#00ff8899", textAlign: "center", maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.7 }}>
-            {L(t.profileIntro)}
-          </p>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
+            <div style={{ width: 32, height: 1, background: "#00ff88" }} />
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>{lang === "en" ? "FEATURED PRODUCT" : "주력 프로덕트"}</span>
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div style={{ maxWidth: 700, margin: "0 auto 32px" }}>
-            {L(t.profileCareer).map((item, i) => (
-              <div key={i} style={{ display: "flex", gap: 16, marginBottom: 16, alignItems: "baseline" }}>
-                <span style={{ color: "#00ff88", fontWeight: 700, fontSize: 14, fontFamily: "'Syne',sans-serif", minWidth: 130, display: "inline-block" }}>{item.year}</span>
-                <span style={{ color: "#bbb", fontSize: 14 }}>{item.desc}</span>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
+          <div style={{ padding: "clamp(28px,4vw,56px)", background: "linear-gradient(135deg, #111 0%, #0d1a13 100%)", border: "1px solid #00ff8825", borderRadius: 12, position: "relative", overflow: "hidden" }}>
+            <div style={{
+              position: "absolute", top: -100, right: -100, width: 400, height: 400,
+              background: "radial-gradient(circle, #00ff8810 0%, transparent 70%)",
+              borderRadius: "50%", filter: "blur(60px)", pointerEvents: "none",
+            }} />
 
-        <FadeIn delay={0.2}>
-          <div style={{ textAlign: "center" }}>
-            <span style={{ padding: "6px 16px", border: "1px solid #00ff8850", borderRadius: 20, fontSize: 13, color: "#00ff88", display: "inline-block" }}>Web3 PM</span>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 24, position: "relative" }}>
+              <div>
+                <a href="https://millionscan.com" target="_blank" rel="noopener" style={{ display: "block", marginBottom: 16, width: "fit-content" }}>
+                  <img src="/millionscan-logo.png" alt="MillionScan" style={{ height: 64, width: "auto", display: "block", opacity: 0.95, transition: "opacity 0.2s" }} onMouseEnter={e => e.currentTarget.style.opacity = "1"} onMouseLeave={e => e.currentTarget.style.opacity = "0.95"} />
+                </a>
+                <div className="tag-live" style={{ marginBottom: 20 }}>
+                  <span style={{ display: "inline-block", width: 6, height: 6, borderRadius: "50%", background: "#00ff88", marginRight: 8, animation: "pulse 2s infinite", verticalAlign: "middle" }} />
+                  {L(t.msStatusLabel)}
+                </div>
+                <p style={{ fontSize: "clamp(18px,2.2vw,24px)", color: "#e8e6e3", fontWeight: 600, letterSpacing: -0.3, marginBottom: 8, fontFamily: "'Syne',sans-serif" }}>
+                  {L(t.msSubtitle)}
+                </p>
+                <p style={{ fontSize: 15, color: "#aaa", fontWeight: 400, fontStyle: "italic", maxWidth: 560 }}>
+                  {L(t.msTagline)}
+                </p>
+              </div>
+              <a href="https://millionscan.com" target="_blank" rel="noopener" className="btn-primary" style={{ textDecoration: "none", flexShrink: 0 }}>
+                VIEW LIVE →
+              </a>
+            </div>
+
+            <p style={{ fontSize: 15, color: "#bbb", lineHeight: 1.9, maxWidth: 800, marginBottom: 32, fontWeight: 400, position: "relative" }} dangerouslySetInnerHTML={{ __html: L(t.msDesc) }} />
+
+            {/* Image gallery */}
+            <div style={{ marginBottom: 32, position: "relative" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, fontWeight: 600, textTransform: "uppercase" }}>
+                  {lang === "en" ? "Product Screens" : "프로덕트 화면"}
+                </div>
+                <div className="gallery-hint" style={{ fontSize: 11, color: "#666", letterSpacing: 1, fontStyle: "italic" }}>
+                  {L(t.galleryHint)}
+                </div>
+              </div>
+              <div className="ms-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
+                {[
+                  { src: "/millionscan/01_main_dark.png", label: L(t.msImageCaptions)[0] },
+                  { src: "/millionscan/02_heatmap.png", label: L(t.msImageCaptions)[1] },
+                  { src: "/millionscan/03_trader_detail.png", label: L(t.msImageCaptions)[2] },
+                  { src: "/millionscan/04_watchlist.png", label: L(t.msImageCaptions)[3] },
+                  { src: "/millionscan/05_dev_api.png", label: L(t.msImageCaptions)[4] },
+                  { src: "/millionscan/06_api_reference.png", label: L(t.msImageCaptions)[5] },
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
+                    background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
+                    width: 280, flexShrink: 0, scrollSnapAlign: "start", scrollSnapStop: "always",
+                  }}
+                  onClick={() => setLightboxImg(item.src)}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8840"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
+                  >
+                    <img src={item.src} alt={item.label} style={{ width: "100%", height: 200, display: "block", objectFit: "cover", objectPosition: "top" }} />
+                    <div style={{ padding: "12px 14px" }}>
+                      <div style={{ fontSize: 12, color: "#999", fontWeight: 400, lineHeight: 1.4 }}>{item.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="ms-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 28, position: "relative" }}>
+              {L(t.msStats).map((s, i) => (
+                <div key={i} style={{ padding: "16px", background: "#0a0a0a", border: "1px solid #1a1a1a", borderRadius: 8, display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 72 }}>
+                  <div style={{ fontSize: 10, color: "#777", letterSpacing: 1.5, marginBottom: 6, textTransform: "uppercase" }}>{s.label}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: s.color, fontFamily: "'Syne',sans-serif", lineHeight: 1.3 }}>{s.value}</div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", position: "relative" }}>
+              {L(t.msTags).map(tag => (
+                <span key={tag} style={{
+                  padding: "5px 11px", background: "#1a1a1a", borderRadius: 3,
+                  fontSize: 12, color: "#999", fontWeight: 400,
+                }}>{tag}</span>
+              ))}
+            </div>
           </div>
         </FadeIn>
-      </div>
+      </section>
 
       <div className="glow-line" />
 
@@ -561,14 +738,14 @@ export default function Portfolio() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p style={{ fontSize: 17, color: "#aaa", lineHeight: 2, maxWidth: 700, marginBottom: 48, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.aboutDesc) }} />
+          <p style={{ fontSize: 17, color: "#aaa", lineHeight: 2, maxWidth: 720, marginBottom: 48, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.aboutDesc) }} />
         </FadeIn>
 
         <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
           {L(t.aboutCards).map((item, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <div className="card" style={{ height: "100%" }}>
-                <div style={{ fontSize: 24, color: "#00ff88", marginBottom: 16 }}>{item.icon}</div>
+                <div style={{ fontSize: 22, color: "#7fcca3", marginBottom: 16 }}>{item.icon}</div>
                 <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 10, fontFamily: "'Syne',sans-serif" }}>{item.title}</h3>
                 <p style={{ fontSize: 13, color: "#999", lineHeight: 1.7, fontWeight: 400 }}>{item.desc}</p>
               </div>
@@ -576,118 +753,6 @@ export default function Portfolio() {
           ))}
         </div>
       </section>
-
-      <div className="glow-line" />
-
-      {/* JOURNEY */}
-      <section id="journey" style={{ padding: "clamp(60px,10vw,140px) clamp(20px,8vw,120px)" }}>
-        <FadeIn>
-          <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
-            <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>JOURNEY</span>
-          </div>
-          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 60, letterSpacing: -1 }}>
-            {L(t.journeyTitle)}
-          </h2>
-        </FadeIn>
-
-        <div style={{ position: "relative", paddingLeft: 40 }}>
-          {/* Vertical line */}
-          <div style={{
-            position: "absolute", left: 11, top: 8, bottom: 8, width: 1,
-            background: "linear-gradient(180deg, #00ff88 0%, #00ff8840 50%, #1a1a1a 100%)",
-          }} />
-
-          {L(t.journeyItems).map((item, i) => (
-            <FadeIn key={i} delay={i * 0.12}>
-              <div style={{ marginBottom: 48, position: "relative" }}>
-                {/* Dot */}
-                <div style={{
-                  position: "absolute", left: -35, top: 6, width: 12, height: 12,
-                  borderRadius: "50%", background: item.color, boxShadow: `0 0 12px ${item.color}50`,
-                }} />
-                {/* Year badge */}
-                <div style={{
-                  display: "inline-block", padding: "4px 12px", background: item.color + "15",
-                  border: `1px solid ${item.color}30`, borderRadius: 4, marginBottom: 12,
-                  fontSize: 13, fontWeight: 700, color: item.color, fontFamily: "'Syne',sans-serif",
-                  letterSpacing: 1,
-                }}>{item.year}</div>
-                <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: 22, fontWeight: 700, marginBottom: 4 }}>
-                  {item.title}
-                </h3>
-                <div style={{ fontSize: 13, color: "#777", marginBottom: 12, fontWeight: 500 }}>{item.subtitle}</div>
-                <p style={{ fontSize: 14, color: "#999", lineHeight: 1.8, maxWidth: 600, fontWeight: 400, marginBottom: 12 }}>
-                  {item.desc}
-                </p>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  {item.tags.map(tag => (
-                    <span key={tag} style={{
-                      padding: "4px 10px", background: "#1a1a1a", borderRadius: 3,
-                      fontSize: 12, color: "#999", fontWeight: 400,
-                    }}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-
-        <FadeIn delay={0.5}>
-          <div style={{
-            marginTop: 24, padding: "24px 32px", border: "1px solid #1a1a1a", borderRadius: 8,
-            background: "#111", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap",
-          }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#00ff88", animation: "pulse 2s infinite" }} />
-            <span style={{ fontSize: 14, color: "#999", fontWeight: 400 }}>
-              {L(t.journeyNow)}
-            </span>
-          </div>
-        </FadeIn>
-      </section>
-
-      <div className="glow-line" />
-
-      {/* SERVICES */}
-      <section id="services" style={{ padding: "clamp(60px,10vw,140px) clamp(20px,8vw,120px)" }}>
-        <FadeIn>
-          <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
-            <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>SERVICES</span>
-          </div>
-          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 48, letterSpacing: -1 }}>
-            {L(t.servicesTitle1)} <span style={{ color: "#00ff88" }}>{L(t.servicesTitle2)}</span>
-          </h2>
-        </FadeIn>
-
-        <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 2 }}>
-          {L(t.serviceItems).map((s, i) => (
-            <FadeIn key={i} delay={i * 0.08}>
-              <div style={{
-                padding: "40px 32px", borderBottom: "1px solid #1a1a1a",
-                borderRight: "1px solid #1a1a1a", transition: "background .3s",
-                cursor: "default",
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = "#111"}
-              onMouseLeave={e => e.currentTarget.style.background = "transparent"}
-              >
-                <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 48, fontWeight: 800, color: "transparent", marginBottom: 16,
-                  WebkitTextStroke: "1px #00ff8840",
-                }}>{s.num}</div>
-                <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20, fontFamily: "'Syne',sans-serif" }}>{s.title}</h3>
-                {s.items.map((item, j) => (
-                  <div key={j} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                    <div style={{ width: 4, height: 4, background: "#00ff88", borderRadius: "50%" }} />
-                    <span style={{ fontSize: 14, color: "#999", fontWeight: 400 }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </section>
-
-      <div className="glow-line" />
 
       {/* PROJECTS */}
       <section id="projects" style={{ padding: "clamp(60px,10vw,140px) clamp(20px,8vw,120px)" }}>
@@ -701,144 +766,32 @@ export default function Portfolio() {
           </h2>
         </FadeIn>
 
-        {/* Project 1 - VATICA */}
-        <FadeIn>
+        {/* Bot */}
+        <FadeIn delay={0.1}>
           <div style={{ marginBottom: 48, padding: "clamp(28px,4vw,56px)", background: "#111", border: "1px solid #1a1a1a", borderRadius: 12, position: "relative", overflow: "hidden" }}>
             <div style={{
               position: "absolute", top: -60, right: -60, width: 300, height: 300,
-              background: "radial-gradient(circle, #00ff8810 0%, transparent 70%)",
+              background: "radial-gradient(circle, #ff880008 0%, transparent 70%)",
               borderRadius: "50%", filter: "blur(50px)", pointerEvents: "none",
             }} />
-
-            <div className="vatica-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 24 }}>
-              <div>
-                <div className="tag" style={{ marginBottom: 16 }}>IN DEVELOPMENT</div>
-                <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 800, letterSpacing: -0.5 }}>
-                  VATICA
-                </h3>
-                <p style={{ fontSize: 14, color: "#00ff88", fontWeight: 500, marginTop: 4, letterSpacing: 0.5 }}>
-                  Decentralized Prediction Protocol
-                </p>
-              </div>
-              <div style={{ display: "flex", gap: 12 }}>
-                <div style={{ padding: "8px 16px", background: "#1a1a1a", borderRadius: 6, textAlign: "center" }}>
-                  <div style={{ fontSize: 18, fontWeight: 800, color: "#00ff88", fontFamily: "'Syne',sans-serif" }}>4</div>
-                  <div style={{ fontSize: 10, color: "#777", letterSpacing: 1, marginTop: 2 }}>TEAM</div>
-                </div>
-                <div style={{ padding: "8px 16px", background: "#1a1a1a", borderRadius: 6, textAlign: "center" }}>
-                  <div style={{ fontSize: 18, fontWeight: 800, color: "#00ff88", fontFamily: "'Syne',sans-serif" }}>1yr</div>
-                  <div style={{ fontSize: 10, color: "#777", letterSpacing: 1, marginTop: 2 }}>{lang === "en" ? "OPS" : "운영"}</div>
-                </div>
-              </div>
-            </div>
-
-            <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.9, maxWidth: 720, marginBottom: 32, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.vaticaDesc) }} />
-
-
-            {/* App Design Showcase */}
-            <div style={{ marginBottom: 32 }}>
-              <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
-                App Design
-              </div>
-              <div className="vatica-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
-                {[
-                  { src: "/vatica-01.jpg", label: "Wallet Connect" },
-                  { src: "/vatica-02.jpg", label: "Portfolio & Earnings" },
-                  { src: "/vatica-03.jpg", label: "Swipe Survey" },
-                  { src: "/vatica-04.jpg", label: "P/L Results" },
-                ].map((item, i) => (
-                  <div key={i} style={{
-                    borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
-                    background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                    width: 160, flexShrink: 0, scrollSnapAlign: "center", scrollSnapStop: "always",
-                  }}
-                  onClick={() => setLightboxImg(item.src)}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = "#00ff8830"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
-                  >
-                    <img src={item.src} alt={item.label} style={{ width: "100%", height: 280, display: "block", objectFit: "cover", objectPosition: "top" }} />
-                    <div style={{ padding: "12px 14px" }}>
-                      <div style={{ fontSize: 13, color: "#999", fontWeight: 400 }}>{item.label}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p style={{ fontSize: 12, color: "#666", marginTop: 10, fontStyle: "italic" }}>
-                {L(t.vaticaIpNote)}
-              </p>
-            </div>
-
-            {/* Feature Showcase Grid */}
-            <div style={{ marginBottom: 32 }}>
-              <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
-                Core Features
-              </div>
-              <div className="vatica-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
-                {L(t.vaticaFeatures).map((f, i) => (
-                  <div key={i} style={{
-                    padding: "20px 16px", background: "#0d0d0d", border: "1px solid #1a1a1a",
-                    borderRadius: 8, transition: "border-color .3s",
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.borderColor = "#00ff8830"}
-                  onMouseLeave={e => e.currentTarget.style.borderColor = "#1a1a1a"}
-                  >
-                    <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6, fontFamily: "'Syne',sans-serif", color: "#e8e6e3" }}>{f.name}</div>
-                    <div style={{ fontSize: 13, color: "#888", lineHeight: 1.6, fontWeight: 400 }}>{f.desc}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* My Role */}
-            <div style={{ padding: "20px 24px", background: "#0a0a0a", border: "1px solid #1a1a1a", borderRadius: 8, marginBottom: 24 }}>
-              <div style={{ fontSize: 12, color: "#00ff88", letterSpacing: 2, marginBottom: 12, fontWeight: 600, textTransform: "uppercase" }}>My Role</div>
-              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                {[
-                  ...L(t.vaticaRoles),
-                ].map(r => (
-                  <div key={r} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <div style={{ width: 5, height: 5, background: "#00ff88", borderRadius: "50%" }} />
-                    <span style={{ fontSize: 13, color: "#999", fontWeight: 400 }}>{r}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <p style={{ fontSize: 12, color: "#888", fontStyle: "italic", marginTop: 12 }}>{L(t.vaticaAiNote)}</p>
-
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 24 }}>
-              {(lang === "en" ? ["Prediction Market", "Web3 Service", "dApp Planning", "Smart Contract Structure", "On-chain Settlement", "USDC", "Collaboration Structure", "Initial Equity Structure", "Mobile-first"] : ["Prediction Market", "Web3 Service", "dApp 기획", "스마트컨트랙트 구조", "온체인 정산", "USDC", "협업 구조", "초기 지분 구조", "Mobile-first"]).map(tag => (
-                <span key={tag} style={{
-                  padding: "5px 11px", background: "#1a1a1a", borderRadius: 3,
-                  fontSize: 12, color: "#999", fontWeight: 400,
-                }}>{tag}</span>
-              ))}
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* Project 2 - Copy Trading Bot */}
-        <FadeIn delay={0.1}>
-          <div style={{ marginBottom: 24, padding: "clamp(28px,4vw,56px)", background: "#111", border: "1px solid #1a1a1a", borderRadius: 12, position: "relative", overflow: "hidden" }}>
-            <div style={{
-              position: "absolute", top: -60, right: -60, width: 300, height: 300,
-              background: "radial-gradient(circle, #ff880010 0%, transparent 70%)",
-              borderRadius: "50%", filter: "blur(50px)", pointerEvents: "none",
-            }} />
-            <div className="tag" style={{ borderColor: "#ff880050", color: "#ff8800", marginBottom: 16 }}>LIVE & OPERATING</div>
+            <div className="tag" style={{ borderColor: "#ff880030", color: "#c89a6f", marginBottom: 16, background: "rgba(255, 136, 0, 0.04)" }}>{L(t.botStatusLabel)}</div>
             <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, marginBottom: 4, letterSpacing: -0.5 }}>
               {lang === "en" ? "AI Copy Trading Bot" : "AI 카피 트레이딩 봇"}
             </h3>
-            <p style={{ fontSize: 14, color: "#ff8800", fontWeight: 500, marginBottom: 20, letterSpacing: 0.5 }}>
-              Automated Trading System — On-chain Tracking · Telegram Control · Live
+            <p style={{ fontSize: 14, color: "#c89a6f", fontWeight: 500, marginBottom: 20, letterSpacing: 0.5 }}>
+              {L(t.botSubtitle)}
             </p>
             <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.9, maxWidth: 720, marginBottom: 28, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.botDesc) }} />
 
-
             {/* Bot Telegram Screenshots */}
             <div style={{ marginBottom: 24 }}>
-              <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, marginBottom: 16, fontWeight: 600, textTransform: "uppercase" }}>
-                Live System
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, fontWeight: 600, textTransform: "uppercase" }}>
+                  Live System
+                </div>
+                <div className="gallery-hint" style={{ fontSize: 11, color: "#666", letterSpacing: 1, fontStyle: "italic" }}>
+                  {L(t.galleryHint)}
+                </div>
               </div>
               <div className="bot-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
                 {[
@@ -849,7 +802,7 @@ export default function Portfolio() {
                   <div key={i} style={{
                     borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
                     background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
-                    width: 160, flexShrink: 0, scrollSnapAlign: "center", scrollSnapStop: "always",
+                    width: 250, flexShrink: 0, scrollSnapAlign: "start", scrollSnapStop: "always",
                   }}
                   onClick={() => setLightboxImg(item.src)}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff880030"; e.currentTarget.style.transform = "translateY(-2px)"; }}
@@ -864,14 +817,12 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* Bot Feature highlights */}
+            {/* Bot Stats */}
             <div className="bot-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 24 }}>
-              {[
-...L(t.botStats),
-              ].map((s, i) => (
-                <div key={i} style={{ padding: "16px", background: "#0d0d0d", border: "1px solid #1a1a1a", borderRadius: 8 }}>
+              {L(t.botStats).map((s, i) => (
+                <div key={i} style={{ padding: "16px", background: "#0d0d0d", border: "1px solid #1a1a1a", borderRadius: 8, display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 72 }}>
                   <div style={{ fontSize: 10, color: "#777", letterSpacing: 1.5, marginBottom: 6, textTransform: "uppercase" }}>{s.label}</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: s.color, fontFamily: "'Syne',sans-serif" }}>{s.value}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: s.color, fontFamily: "'Syne',sans-serif", lineHeight: 1.3 }}>{s.value}</div>
                 </div>
               ))}
             </div>
@@ -887,16 +838,83 @@ export default function Portfolio() {
           </div>
         </FadeIn>
 
-        {/* Project 3 - Web3 Experience */}
-        <FadeIn delay={0.2}>
-          <div style={{ padding: "clamp(28px,4vw,48px)", background: "#111", border: "1px solid #1a1a1a", borderRadius: 12 }}>
-            <div className="tag" style={{ borderColor: "#8888ff50", color: "#8888ff", marginBottom: 16 }}>EXPERIENCE</div>
-            <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, marginBottom: 12, letterSpacing: -0.5 }}>
-              {lang === "en" ? "Web3 Project Experience" : "Web3 프로젝트 다수 경험"}
-            </h3>
-            <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.9, maxWidth: 720, marginBottom: 24, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.web3Desc) }} />
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              {(lang === "en" ? ["Metakongz", "NFT", "Community Ops", "PM", "Service Planning", "Blockchain"] : ["Metakongz", "NFT", "커뮤니티 운영", "PM", "서비스 기획", "블록체인"]).map(tag => (
+        {/* VATICA */}
+        <FadeIn delay={0.15}>
+          <div style={{ marginBottom: 0, padding: "clamp(28px,4vw,56px)", background: "#111", border: "1px solid #1a1a1a", borderRadius: 12, position: "relative", overflow: "hidden" }}>
+            <div style={{
+              position: "absolute", top: -60, right: -60, width: 300, height: 300,
+              background: "radial-gradient(circle, #ff880008 0%, transparent 70%)",
+              borderRadius: "50%", filter: "blur(50px)", pointerEvents: "none",
+            }} />
+
+            <div className="vatica-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 24 }}>
+              <div>
+                <div className="tag" style={{ marginBottom: 16, borderColor: "#ff880030", color: "#c89a6f", background: "rgba(255, 136, 0, 0.04)" }}>{L(t.vaticaStatusLabel)}</div>
+                <h3 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 800, letterSpacing: -0.5 }}>
+                  VATICA
+                </h3>
+                <p style={{ fontSize: 14, color: "#c89a6f", fontWeight: 500, marginTop: 4, letterSpacing: 0.5 }}>
+                  {L(t.vaticaSubtitle)}
+                </p>
+              </div>
+            </div>
+
+            <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.9, maxWidth: 720, marginBottom: 32, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.vaticaDesc) }} />
+
+            {/* App Design Showcase */}
+            <div style={{ marginBottom: 32 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                <div style={{ fontSize: 12, color: "#777", letterSpacing: 2, fontWeight: 600, textTransform: "uppercase" }}>
+                  {lang === "en" ? "App Design" : "앱 디자인"}
+                </div>
+                <div className="gallery-hint" style={{ fontSize: 11, color: "#666", letterSpacing: 1, fontStyle: "italic" }}>
+                  {L(t.galleryHint)}
+                </div>
+              </div>
+              <div className="vatica-gallery" style={{ display: "flex", overflowX: "auto", gap: 12, WebkitOverflowScrolling: "touch", scrollSnapType: "x mandatory", scrollBehavior: "smooth", paddingBottom: 8 }}>
+                {[
+                  { src: "/vatica/05_markets.jpg", label: lang === "en" ? "Markets — Swipe UX" : "Markets — 스와이프 UX" },
+                  { src: "/vatica/04_portfolio.jpg", label: lang === "en" ? "Portfolio & P/L" : "포트폴리오 & 손익" },
+                  { src: "/vatica/01_wallet_connect.jpg", label: lang === "en" ? "Wallet Connect" : "지갑 연결" },
+                  { src: "/vatica/02_onboarding.jpg", label: lang === "en" ? "Onboarding & TOS" : "온보딩 & 약관" },
+                  { src: "/vatica/03_how_it_works.jpg", label: lang === "en" ? "How It Works" : "사용 방법" },
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    borderRadius: 8, overflow: "hidden", border: "1px solid #1a1a1a",
+                    background: "#0d0d0d", transition: "all .3s", cursor: "pointer",
+                    width: 240, flexShrink: 0, scrollSnapAlign: "start", scrollSnapStop: "always",
+                  }}
+                  onClick={() => setLightboxImg(item.src)}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "#ff880030"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "none"; }}
+                  >
+                    <img src={item.src} alt={item.label} style={{ width: "100%", height: 420, display: "block", objectFit: "cover", objectPosition: "top" }} />
+                    <div style={{ padding: "12px 14px" }}>
+                      <div style={{ fontSize: 13, color: "#999", fontWeight: 400 }}>{item.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p style={{ fontSize: 12, color: "#666", marginTop: 10, fontStyle: "italic" }}>
+                {L(t.vaticaIpNote)}
+              </p>
+            </div>
+
+            {/* My Role */}
+            <div style={{ padding: "20px 24px", background: "#0a0a0a", border: "1px solid #1a1a1a", borderRadius: 8, marginBottom: 24 }}>
+              <div style={{ fontSize: 12, color: "#c89a6f", letterSpacing: 2, marginBottom: 12, fontWeight: 600, textTransform: "uppercase" }}>My Role</div>
+              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                {L(t.vaticaRoles).map(r => (
+                  <div key={r} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{ width: 5, height: 5, background: "#c89a6f", borderRadius: "50%" }} />
+                    <span style={{ fontSize: 13, color: "#999", fontWeight: 400 }}>{r}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 16 }}>
+              {(lang === "en" ? ["Prediction Market", "Web3 Service", "Tinder-style UX", "Wallet Connect", "On-chain Settlement Flow", "USDC", "Mobile-first", "Overseas Designer"] : ["예측 마켓", "Web3 서비스", "Tinder 스타일 UX", "지갑 연결", "온체인 정산 흐름", "USDC", "Mobile-first", "해외 디자이너"]).map(tag => (
                 <span key={tag} style={{
                   padding: "5px 11px", background: "#1a1a1a", borderRadius: 3,
                   fontSize: 12, color: "#999", fontWeight: 400,
@@ -909,23 +927,110 @@ export default function Portfolio() {
 
       <div className="glow-line" />
 
-      {/* TEAM */}
-      <section id="team" style={{ padding: "clamp(60px,10vw,140px) clamp(20px,8vw,120px)" }}>
+      {/* WEB3 CAREER */}
+      <section id="career" style={{ padding: "clamp(60px,10vw,140px) clamp(20px,8vw,120px)" }}>
         <FadeIn>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
             <div style={{ width: 32, height: 1, background: "#00ff88" }} />
-            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>TEAM</span>
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>{lang === "en" ? "WEB3 CAREER" : "WEB3 경력"}</span>
           </div>
-          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 16, letterSpacing: -1 }}>
-            {L(t.teamTitle)}
+          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 8, letterSpacing: -1 }}>
+            {L(t.careerTitle)}
           </h2>
-          <p style={{ fontSize: 16, color: "#888", maxWidth: 600, lineHeight: 1.7, marginBottom: 48, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.teamDesc) }} />
+          <p style={{ fontSize: 15, color: "#7fcca3", fontWeight: 500, marginBottom: 20, letterSpacing: 0.3 }}>
+            {L(t.careerSubtitle)}
+          </p>
+          <p style={{ fontSize: 16, color: "#aaa", lineHeight: 1.8, maxWidth: 720, marginBottom: 40, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.careerIntro) }} />
         </FadeIn>
 
-        <div className="team-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
-          {[
-...L(t.teamMembers),
-          ].map((m, i) => (
+        {/* Companies grid */}
+        <div className="companies-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+          {L(t.careerCompanies).map((company, i) => (
+            <FadeIn key={i} delay={i * 0.1}>
+              <div style={{
+                padding: "24px 20px", background: "#0d0d0d", border: `1px solid ${company.color}20`,
+                borderRadius: 8, transition: "all .3s",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = company.color + "50"; e.currentTarget.style.background = "#101010"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = company.color + "20"; e.currentTarget.style.background = "#0d0d0d"; }}
+              >
+                <div style={{ fontSize: 11, color: company.color, letterSpacing: 1.5, marginBottom: 4, fontWeight: 600, fontFamily: "'Syne',sans-serif" }}>{company.period}</div>
+                <h4 style={{ fontFamily: "'Syne',sans-serif", fontSize: 18, fontWeight: 800, marginBottom: 4, letterSpacing: -0.3, color: "#e8e6e3" }}>{company.name}</h4>
+                <div style={{ fontSize: 12, color: "#888", marginBottom: 12, fontWeight: 500 }}>{company.role}</div>
+                <p style={{ fontSize: 13, color: "#999", lineHeight: 1.7, marginBottom: 14, fontWeight: 400 }}>{company.desc}</p>
+                <div style={{ paddingTop: 12, borderTop: "1px solid #1a1a1a" }}>
+                  <div style={{ fontSize: 10, color: "#666", letterSpacing: 1.5, marginBottom: 8, textTransform: "uppercase", fontWeight: 600 }}>
+                    {lang === "en" ? "Projects" : "프로젝트"}
+                  </div>
+                  {company.projects.map((p, j) => (
+                    <div key={j} style={{ marginBottom: 6 }}>
+                      <span style={{ fontSize: 13, color: "#ddd", fontWeight: 500 }}>{p.name}</span>
+                      {p.note && <span style={{ fontSize: 12, color: "#777", marginLeft: 6, fontWeight: 400 }}>· {p.note}</span>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
+      <div className="glow-line" />
+
+      {/* CAPABILITIES (was SERVICES) */}
+      <section id="capabilities" style={{ padding: "clamp(60px,10vw,140px) clamp(20px,8vw,120px)" }}>
+        <FadeIn>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
+            <div style={{ width: 32, height: 1, background: "#00ff88" }} />
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>{lang === "en" ? "CAPABILITIES" : "핵심 역량"}</span>
+          </div>
+          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 48, letterSpacing: -1 }}>
+            {L(t.capabilitiesTitle1)} <span style={{ color: "#7fcca3" }}>{L(t.capabilitiesTitle2)}</span>
+          </h2>
+        </FadeIn>
+
+        <div className="capabilities-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 2 }}>
+          {L(t.capabilityItems).map((s, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div style={{
+                padding: "40px 32px", borderBottom: "1px solid #1a1a1a",
+                borderRight: "1px solid #1a1a1a", transition: "background .3s",
+                cursor: "default",
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = "#111"}
+              onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+              >
+                <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 48, fontWeight: 800, color: "transparent", marginBottom: 16,
+                  WebkitTextStroke: "1px #00ff8830",
+                }}>{s.num}</div>
+                <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20, fontFamily: "'Syne',sans-serif" }}>{s.title}</h3>
+                {s.items.map((item, j) => (
+                  <div key={j} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                    <div style={{ width: 4, height: 4, background: "#7fcca3", borderRadius: "50%" }} />
+                    <span style={{ fontSize: 14, color: "#999", fontWeight: 400 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
+      {/* WORKFLOW (was TEAM) */}
+      <section id="workflow" style={{ padding: "clamp(60px,10vw,140px) clamp(20px,8vw,120px)" }}>
+        <FadeIn>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
+            <div style={{ width: 32, height: 1, background: "#00ff88" }} />
+            <span style={{ fontSize: 13, color: "#00ff88", letterSpacing: 2, fontWeight: 500 }}>{lang === "en" ? "AI WORKFLOW" : "AI 워크플로우"}</span>
+          </div>
+          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, marginBottom: 16, letterSpacing: -1 }}>
+            {L(t.workflowTitle)}
+          </h2>
+          <p style={{ fontSize: 16, color: "#888", maxWidth: 720, lineHeight: 1.7, marginBottom: 48, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.workflowDesc) }} />
+        </FadeIn>
+
+        <div className="workflow-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
+          {L(t.workflowCapabilities).map((m, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <div style={{
                 padding: "32px 24px", background: "#111", border: "1px solid #1a1a1a",
@@ -936,23 +1041,23 @@ export default function Portfolio() {
               onMouseLeave={e => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.background = "#111"; }}
               >
                 <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 14, fontWeight: 700, marginBottom: 6 }}>{m.role}</div>
-                <div style={{ fontSize: 24, fontWeight: 800, color: m.color, fontFamily: "'Syne',sans-serif" }}>{m.count}</div>
+                <div style={{ fontSize: 16, fontWeight: 800, color: m.color, fontFamily: "'Syne',sans-serif", letterSpacing: 0.5 }}>{m.count}</div>
               </div>
             </FadeIn>
           ))}
         </div>
 
         <FadeIn delay={0.4}>
-          <div className="team-quote" style={{
+          <div className="workflow-quote" style={{
             marginTop: 48, padding: "32px 40px", background: "linear-gradient(135deg, #111 0%, #0f1a14 100%)",
             border: "1px solid #00ff8815", borderRadius: 8,
           }}>
             <p style={{ fontSize: 18, fontWeight: 600, lineHeight: 1.7, fontFamily: "'Syne',sans-serif" }}>
               <span style={{ color: "#00ff88" }}>"</span>
-              <span dangerouslySetInnerHTML={{ __html: L(t.teamQuote1) }} />
+              <span dangerouslySetInnerHTML={{ __html: L(t.workflowQuote1) }} />
               <span style={{ color: "#00ff88" }}>"</span>
             </p>
-            <p style={{ fontSize: 13, color: "#777", marginTop: 12 }}>{L(t.teamQuote2)}</p>
+            <p style={{ fontSize: 13, color: "#777", marginTop: 12 }}>{L(t.workflowQuote2)}</p>
           </div>
         </FadeIn>
       </section>
@@ -974,12 +1079,13 @@ export default function Portfolio() {
           </h2>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <p style={{ fontSize: 16, color: "#888", maxWidth: 480, margin: "0 auto 40px", lineHeight: 1.7, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.contactDesc) }} />
+          <p style={{ fontSize: 16, color: "#888", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.7, fontWeight: 400 }} dangerouslySetInnerHTML={{ __html: L(t.contactDesc) }} />
         </FadeIn>
         <FadeIn delay={0.3}>
           <div className="contact-buttons" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <a href="mailto:94yoonbum@gmail.com" className="btn-primary" style={{ textDecoration: "none" }}>{L(t.contactBtn1)}</a>
             <a href="https://t.me/bbbeeeooommm" className="btn-outline" target="_blank" rel="noopener" style={{ textDecoration: "none" }}>Telegram</a>
+            <a href="https://millionscan.com" target="_blank" rel="noopener" className="btn-outline" style={{ textDecoration: "none" }}>MillionScan ↗</a>
           </div>
         </FadeIn>
       </section>
@@ -990,7 +1096,7 @@ export default function Portfolio() {
         display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16,
       }}>
         <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 14 }}>
-          <span style={{ color: "#00ff88" }}>●</span> Mr. BEOM
+          <span style={{ color: "#00ff88" }}>●</span> {lang === "en" ? "Heo Yun-Beom" : "허윤범"}
         </div>
         <div style={{ fontSize: 13, color: "#666" }}>
           © 2026 — {L(t.footerTag)}
@@ -1006,6 +1112,23 @@ export default function Portfolio() {
           cursor: "pointer",
         }}>
           <img src={lightboxImg} alt="" style={{ maxWidth: "90vw", maxHeight: "90vh", objectFit: "contain" }} />
+        </div>
+      )}
+
+      {/* Small profile lightbox — modest size */}
+      {profileLightbox && (
+        <div onClick={() => setProfileLightbox(null)} style={{
+          position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
+          background: "rgba(0,0,0,0.85)", zIndex: 10000,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          cursor: "pointer", backdropFilter: "blur(8px)",
+        }}>
+          <img src={profileLightbox} alt="" style={{
+            width: "min(320px, 70vw)", height: "min(320px, 70vw)",
+            borderRadius: "50%", objectFit: "cover",
+            border: "3px solid #00ff8840",
+            boxShadow: "0 0 80px rgba(0, 255, 136, 0.15)",
+          }} />
         </div>
       )}
     </div>
